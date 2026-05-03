@@ -23,7 +23,6 @@ export default function HeartCard() {
       container.appendChild(el);
     });
 
-    /* CANVAS */
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const bpmEl = bpmRef.current;
