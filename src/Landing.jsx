@@ -13,7 +13,7 @@ function Landing() {
           Monitor Detak Jantung Anda<br/>
           <span className='font-bold text-sarired'>Secara Instan</span>
         </h1>
-        <p>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
+        <p className='w-120'>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
       </div>
       <img src="" alt="" />
       <div className="flex gap-4">
