@@ -7,17 +7,22 @@ const svgPath = `
 
 function Landing() {
   return (
-    <section className="relative bg-[#0a0a0a] flex flex-col justify-center px-12 overflow-hidden"
-      style={{ height: '100vh' }}>
-        
-    <svg
-      className="absolute top-0 left-0 w-full opacity-20 pointer-events-none"
-      viewBox="0 200 1431 900"
-      preserveAspectRatio="xMidYMid none"
-      style={{ height: '100%', transform: 'scale(1) scaleX(1)' }}>
-        <path d={svgPath} stroke="#FDE2E4" strokeWidth="9" fill="none" />
+    <section className="relative flex gap-6 flex-col justify-center text-center items-center overflow-hidden h-screen">
+      <div className="">
+        <h1 className='text-5xl font-semibold font-mr text-sariblack'>
+          Monitor Detak Jantung Anda<br/>
+          <span className='font-bold text-sarired'>Secara Instan</span>
+        </h1>
+        <p>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
+      </div>
+      <img src="" alt="" />
+      <div className="flex gap-4">
+        <button className='main-btn border border-sariblue'>Pelajari Lebih Lanjut</button>
+        <button className='main-btn'>Mulai Sekarang {<ArrowRight />}</button>
+      </div>
+      <svg className="-z-1 absolute top-0 w-[105%] opacity-12 pointer-events-none h-auto" viewBox="0 250 1431 900">
+        <path d={svgPath} stroke="#FF7252" strokeWidth="9" fill="none" />
       </svg>
-
     </section>
   );
 }

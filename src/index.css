@@ -1,1 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
 @import "tailwindcss";
+
+@theme {
+    --color-sarired: #FF7252;
+    --color-sariblue: #91C6C2;
+    --color-sariyellow: #FAE7CA;
+    --color-sariblack: #191C1E;
+    --color-sariwhite: #F9F9F5;
+    --font-mr: Manrope, sans-serif;
+    --font-int: Inter, sans-serif;
+}
+
+body {
+    @apply font-int bg-sariwhite text-sariblack
+}
+p {
+    @apply text-base/[145%]
+}
+.main-btn {
+    @apply px-10 py-3 text-base
+}
