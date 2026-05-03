@@ -5,7 +5,13 @@ function Landing() {
   return (
     <>
       <section>
-        <div className=""></div>
+        <div className="">
+          <h1>
+            Monitor Detak Jantung Anda
+            <span>Secara Instan</span>
+          </h1>
+          <h1></h1>
+        </div>
         <div className="">
           <button>Pelajari Lebih Lanjut</button>
           <button>Mulai Sekarang {<ArrowRight />}</button>
