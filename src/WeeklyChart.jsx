@@ -42,12 +42,12 @@ export default function WeeklyChart() {
   }, []);
 
   return (
-    <div className="w-[420px] h-[260px] bg-white rounded-[20px] p-4 border border-gray-100 shadow-lg flex items-end">
+    <div className="w-150 h-65 bg-white rounded-[20px] p-4 border border-gray-100 shadow-lg flex items-end">
       {[0,1,2,3].map((_, i) => (
         <div
           key={i}
           ref={el => barsRef.current[i] = el}
-          className="flex-1 bg-emerald-500/25 border-t-[4px] border-[#6BAFA8] rounded-t-[8px]"
+          className="flex-1 bg-emerald-500/25 border-t-4 border-[#6BAFA8] rounded-t-lg"
         />
       ))}
     </div>

@@ -17,6 +17,10 @@ body {
 p {
     @apply text-base/[145%]
 }
+
 .main-btn {
-    @apply px-10 py-3 text-base
+    @apply px-10 py-3 text-base rounded-2xl cursor-pointer hover:scale-105 transition-all duration-112
+}
+.heading-1 {
+    @apply text-5xl/[112%] font-semibold font-mr tracking-tighter
 }

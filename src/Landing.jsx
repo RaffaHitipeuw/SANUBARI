@@ -10,50 +10,41 @@ M942.966 594.942L942.963 594.859C941.636 558.624 954.061 523.326 977.532 496.435
 
 function Landing() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden px-6">
-      <div className="max-w-6xl w-full flex items-center justify-between gap-12">
-        <div className="flex flex-col gap-6 max-w-lg text-left">
-          <h1 className="text-5xl font-semibold font-mr text-sariblack leading-tight">
-            Monitor Detak Jantung Anda<br/>
-            <span className="font-bold text-sarired">Secara Instan</span>
-          </h1>
-
-          <p className='w-120'>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
-
-          <div className="flex gap-4 mt-2">
-            <button className="main-btn border border-sariblue">
-              Pelajari Lebih Lanjut
-            </button>
-
-            <button className="main-btn flex items-center gap-2">
-              Mulai Sekarang <ArrowRight size={18} />
-            </button>
-          </div>
-        </div>
-
-        <div className="relative flex flex-col gap-6">
-
-          <div className="translate-y-4">
-            <HeartCard />
-          </div>
-
-          <div className="-translate-y-2 ml-10">
-            <WeeklyChart />
-          </div>
-
-          <div className="">
-            <FaceScanner />
-          </div>
-
-        </div>
-
+    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Excerpts */}
+      <div className="flex flex-col items-center justify-center text-center gap-6">
+        <h1 className="heading-1 text-sariblack">
+          Monitor Detak Jantung Anda<br/>
+          <span className="font-bold text-sarired">Secara Instan</span>
+        </h1>
+        <p className='w-120'>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
       </div>
-
+      {/* Animation */}
+      <div className="-z-1 relative flex items-center justify-center w-full h-90">
+        <div className="translate-y-[-30%] z-2 translate-x-[15%] absolute">
+          <HeartCard />
+        </div>
+        <div className="translate-y-[10%] z-3 scale-45 translate-x-[50%] absolute">
+          <WeeklyChart />
+        </div>
+        <div className="translate-y-6 translate-x-[-55%] absolute">
+          <FaceScanner />
+        </div>
+      </div>
+      {/* Button Container */}
+      <div className="flex gap-4 mt-2">
+        <button className="main-btn border border-sariblue text-sariblue">
+          Pelajari Lebih Lanjut
+        </button>
+        <button className="main-btn flex items-center gap-2 bg-sarired text-sariwhite">
+          Mulai Sekarang <ArrowRight size={18} />
+        </button>
+      </div>
+      {/* BG LINE */}
       <svg className="-z-10 absolute top-0 w-[105%] opacity-10 pointer-events-none h-auto"
         viewBox="0 250 1431 900">
         <path d={svgPath} stroke="#FF7252" strokeWidth="9" fill="none" />
       </svg>
-
     </section>
   );
 }
