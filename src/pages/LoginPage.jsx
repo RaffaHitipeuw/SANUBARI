@@ -1,6 +1,33 @@
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../firebase-config.js";
 import { Badges } from "../components/sections/Assets";
 
 export default function LoginPage() {
+
+  const handleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+
+      console.log("User Info:", result.user);
+
+      alert("berhasil");
+
+      // window.location.href = "/dashboard";
+
+    } catch (error) {
+      if (
+        error.code === "auth/cancelled-popup-request" ||
+        error.code === "auth/popup-closed-by-user"
+      ) {
+        return;
+      }
+    
+      console.error("Login gagal:", error);
+    
+      alert("gagal");
+    }
+  };
+
   return (
     <div className="w-screen h-screen overflow-hidden bg-[#F9F9F5] flex font-sans">
       
@@ -116,6 +143,7 @@ export default function LoginPage() {
             </div>
 
             <span className="flex gap-2">
+              
               <button
                 type="submit"
                 className="mt-6 w-full h-14 rounded-2xl bg-sariblue hover:brightness-95 transition-all text-white text-base font-semibold font-mr flex items-center justify-center gap-3 shadow-[0_12px_25px_rgba(145,198,194,0.28)]"
@@ -123,9 +151,15 @@ export default function LoginPage() {
                 Masuk
                 <span className="text-[22px] leading-none">→</span>
               </button>
-              <button className="border-2 border-sariblue">
+
+              <button
+                type="button"
+                onClick={handleLogin}
+                className="mt-6 h-14 px-5 rounded-2xl border-2 border-sariblue flex items-center justify-center hover:bg-sariblue/5 transition-all"
+              >
                 <Badges type={'google'} className={'w-6 h-auto'} />
               </button>
+
             </span>
           </form>
 
@@ -162,6 +196,7 @@ export default function LoginPage() {
               </button>
             </div>
           </div>
+
         </div>
       </div>
     </div>
