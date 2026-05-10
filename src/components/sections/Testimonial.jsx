@@ -32,7 +32,7 @@ export default function Testimonial() {
                             <StarFill className={'w-4 h-auto'} />
                             <StarFill className={'w-4 h-auto'} />
                         </span>
-                        <HealthTrendsRotate className={'absolute -bottom-17 right-0 h-auto w-42'}/>
+                        <HealthTrendsRotate className={'text-sarired absolute -bottom-17 right-0 h-auto w-42'}/>
                     </div>
                 </div>
                 <div className="testimonial bg-sarireddark absolute *:opacity-0 mt-6 mr-4 rotate-1 origin-top-left z-2">
@@ -50,7 +50,7 @@ export default function Testimonial() {
                             <StarFill className={'w-4 h-auto'} />
                             <StarFill className={'w-4 h-auto'} />
                         </span>
-                        <HealthTrendsRotate className={'absolute -bottom-17 right-0 h-auto w-42'}/>
+                        <HealthTrendsRotate className={'text-sarired absolute -bottom-17 right-0 h-auto w-42'}/>
                     </div>
                 </div>
                 <div className="testimonial bg-sarireddarker absolute *:opacity-0 mt-12 mr-8 rotate-2 origin-top-left z-1">
@@ -68,7 +68,7 @@ export default function Testimonial() {
                             <StarFill className={'w-4 h-auto'} />
                             <StarFill className={'w-4 h-auto'} />
                         </span>
-                        <HealthTrendsRotate className={'absolute -bottom-17 right-0 h-auto w-42'}/>
+                        <HealthTrendsRotate className={'text-sarired absolute -bottom-17 right-0 h-auto w-42'}/>
                     </div>
                 </div>
             </div>

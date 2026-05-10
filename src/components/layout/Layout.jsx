@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 
 export default function Layout() {
-
     useEffect(() => {
         const lenis = new Lenis({
             duration: 1.2,
@@ -23,10 +22,14 @@ export default function Layout() {
             lenis.destroy();
         };
     }, []);
-
-    return (
-        <main>
-            <Outlet />
-        </main>
-    );
+    return(
+        <>
+            <main>
+                <Outlet/>
+            </main>
+            <footer className="grid grid-rows-12">
+                <div className="col-span-8 flex flex-col gap-4"></div>
+            </footer>
+        </>
+    )
 }
