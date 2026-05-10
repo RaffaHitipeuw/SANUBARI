@@ -1,3 +1,5 @@
+import { Badges } from "../components/sections/Assets";
+
 export default function LoginPage() {
   return (
     <div className="w-screen h-screen overflow-hidden bg-[#F9F9F5] flex font-sans">
@@ -20,7 +22,7 @@ export default function LoginPage() {
             SANUBARI
           </h1>
 
-          <p className="mt-[1.5vh] max-w-[28vw] text-[#6B6D6F] font-int text-[1.05vw] leading-[1.8]">
+          <p className="mt-[1.5vh] max-w-[28vw] text-[#6B6D6F] text-[1.05vw] leading-[1.8]">
             Pemantauan kesehatan canggih untuk hidup lebih
             <br />
             panjang dan sehat. Setiap detak berarti.
@@ -31,7 +33,7 @@ export default function LoginPage() {
             <div className="flex items-center gap-[0.55vw]">
               <div className="w-[0.22vw] min-w-[3px] h-[1.2vw] min-h-[18px] rounded-full bg-[#FF7252]" />
 
-              <span className="text-[1.15vw] min-text-[16px] font-bold text-[#2A2C2D]">
+              <span className="text-[1.15vw] min-text-[16px] font-bold text-sariblack/80">
                 72 BPM
               </span>
             </div>
@@ -50,14 +52,14 @@ export default function LoginPage() {
 
       <div className="w-full lg:w-[40vw] h-full bg-white flex items-center justify-center">
         
-        <div className="w-full max-w-[420px] px-8">
+        <div className="w-full max-w-106 px-8">
           
           <div>
-            <h2 className="text-[1.7rem] font-mr font-bold tracking-[-0.05em] text-[#232527] leading-none">
+            <h2 className="text-[32px] font-mr font-bold tracking-tighter text-[#232527] leading-none">
               Selamat Datang!
             </h2>
 
-            <p className="mt-3 text-[0.95rem] font-int text-[#7B7D7F] font-medium">
+            <p className="mt-3 text-base text-sariblack/80 font-medium">
               Masuk ke akun anda untuk melanjutkan.
             </p>
           </div>
@@ -65,15 +67,15 @@ export default function LoginPage() {
           <form className="mt-12">
             
             <div>
-              <label className="block mb-2 text-[13px] font-int font-medium text-[#2A2C2D]">
+              <label className="block mb-2 text-xs font-medium text-sariblack/80">
                 Email
               </label>
 
-              <div className="h-[52px] bg-[#F2F4F6] rounded-[10px] px-4 flex items-center border border-transparent focus-within:border-[#91C6C2] transition-all">
+              <div className="h-14 bg-sariwhite rounded-2xl px-4 flex items-center border border-transparent focus-within:border-sariblue transition-all">
                 <input
                   type="email"
                   placeholder="name@example.com"
-                  className="w-full bg-transparent outline-none text-[14px] text-[#191C1E] placeholder:text-[#B2B4B6]"
+                  className="w-full bg-transparent outline-none text-sm text-sariblack placeholder:text-sariblack/60"
                 />
               </div>
             </div>
@@ -81,23 +83,23 @@ export default function LoginPage() {
             <div className="mt-6">
               
               <div className="flex items-center justify-between mb-2">
-                <label className="text-[13px] font-int font-medium text-[#2A2C2D]">
+                <label className="text-xs font-medium text-sariblack/80">
                   Password
                 </label>
 
                 <button
                   type="button"
-                  className="text-[12px] font-semibold text-[#91C6C2]"
+                  className="text-xs font-semibold text-sariblue"
                 >
                   Lupa Password?
                 </button>
               </div>
 
-              <div className="h-[52px] bg-[#F2F4F6] rounded-[10px] px-4 flex items-center border border-transparent focus-within:border-[#91C6C2] transition-all">
+              <div className="h-14 bg-sariwhite rounded-2xl px-4 flex items-center border border-transparent focus-within:border-sariblue transition-all">
                 <input
                   type="password"
                   placeholder="••••••••"
-                  className="w-full bg-transparent outline-none text-[14px] text-[#191C1E] placeholder:text-[#B2B4B6]"
+                  className="w-full bg-transparent outline-none text-[14px] text-sariblack placeholder:text-sariblack/60"
                 />
               </div>
             </div>
@@ -105,26 +107,31 @@ export default function LoginPage() {
             <div className="mt-5 flex items-center gap-3">
               <input
                 type="checkbox"
-                className="w-[15px] h-[15px] accent-[#91C6C2]"
+                className="w-4 h-4 accent-sariblue"
               />
 
-              <span className="text-[13px] text-[#646668] font-medium">
+              <span className="text-xs text-sariblack/80 font-medium">
                 Remember Me
               </span>
             </div>
 
-            <button
-              type="submit"
-              className="mt-6 w-full h-[56px] rounded-[10px] bg-[#91C6C2] hover:brightness-95 transition-all text-white text-[20px] font-semibold font-mr flex items-center justify-center gap-3 shadow-[0_12px_25px_rgba(145,198,194,0.28)]"
-            >
-              Masuk
-              <span className="text-[22px] leading-none">→</span>
-            </button>
+            <span className="flex gap-2">
+              <button
+                type="submit"
+                className="mt-6 w-full h-14 rounded-2xl bg-sariblue hover:brightness-95 transition-all text-white text-base font-semibold font-mr flex items-center justify-center gap-3 shadow-[0_12px_25px_rgba(145,198,194,0.28)]"
+              >
+                Masuk
+                <span className="text-[22px] leading-none">→</span>
+              </button>
+              <button className="border-2 border-sariblue">
+                <Badges type={'google'} className={'w-6 h-auto'} />
+              </button>
+            </span>
           </form>
 
-          <div className="mt-7 text-center text-[13px] font-int text-[#77797B] font-medium">
+          <div className="mt-7 text-center text-xs text-sariblack/80 font-medium">
             Belum punya akun?{" "}
-            <button className="font-bold text-[#91C6C2]">
+            <button className="font-bold text-sariblue">
               Daftar
             </button>
           </div>
@@ -132,8 +139,7 @@ export default function LoginPage() {
           <div className="mt-20 mb-10 text-center">
             
             <p
-              className="text-[#B0B3B5] font-semibold leading-[1.4] tracking-[-0.01em]"
-              style={{ fontSize: "13px" }}
+              className="text-sariblack/20 text-sm/[104%] tracking-tight font-semibold"
             >
               © 2026 SANUBARI. Medical Disclaimer: For
               <br />
