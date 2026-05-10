@@ -3,12 +3,12 @@ import { Badges, FeatureBg } from "./Assets";
 
 export default function Features(){
     return(
-        <section className="h-screen relative overflow-hidden items-center justify-center flex flex-col gap-12">
-            <div className="chip-title text-center">
+        <section className="h-screen relative overflow-hidden items-center justify-center flex flex-col gap-12 bg-sariwhite rounded-b-[64px] z-2">
+            <div className="chip-title text-center items-center">
                 <span className="chip text-sariblue">Fitur</span>
                 <h1 className="heading-1">Esensial-mu Jadi Satu</h1>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-6">
                 <div className="card bg-saribluelight">
                     <span className="-top-3 -left-3 flex items-center justify-center relative">
                         <TextSearch className="absolute text-sariblue" size={'40px'}/>
