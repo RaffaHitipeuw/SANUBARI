@@ -3,6 +3,8 @@
 
 @theme {
     --color-sariredlight: #FFB9A9;
+    --color-sarireddark: #e6a698;
+    --color-sarireddarker: #d99d8f;
     --color-sarired: #FF7252;
     --color-saribluelight: #B6EDE9;
     --color-sariblue: #91C6C2;
@@ -14,6 +16,9 @@
     --font-int: Inter, sans-serif;
 }
 
+:root {
+    interpolate-size: allow-keywords;
+}
 body {
     @apply font-int bg-sariwhite text-sariblack
 }
@@ -28,10 +33,10 @@ p {
     @apply text-5xl/[112%] font-semibold font-mr tracking-tighter
 }
 .chip-title {
-    @apply flex flex-col justify-center items-center gap-4
+    @apply flex flex-col gap-4 h-max
 }
 .chip {
-    @apply border px-6 py-3 rounded-4xl
+    @apply border px-12 py-3 rounded-4xl w-max h-max
 }
 .card {
     @apply flex flex-col items-start p-10 rounded-[64px] w-82 h-140 justify-between
@@ -41,4 +46,43 @@ p {
 }
 .card-desc {
     @apply flex flex-col gap-6
+}
+/* About - Small Card */
+.card-small {
+    @apply flex flex-col h-50 justify-center rounded-3xl p-6 bg-saribluelight relative overflow-clip border border-sariblue
+}
+.card-small * {
+    @apply z-2
+}
+.card-small::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    background-color: white;
+    opacity: 21%;
+}
+.card-small h1 {
+    @apply font-mr font-semibold text-[56px]
+}
+.testimonial {
+    @apply flex gap-14 rounded-[56px] w-180
+}
+.testimonial-star {
+    @apply flex text-sarired
+}
+.navigation {
+    @apply absolute px-8 h-16 rounded-4xl bg-sariyellowlight flex justify-center items-center cursor-pointer hover:scale-105 transition-all duration-112
+}
+.accordion-title {
+    @apply flex justify-between items-center text-2xl bg-sariyellowlight rounded-t-[40px] gap-6
+}
+.accordion-content {
+    display: none;
+    transition: grid-template-rows 200ms ease;
+    @apply border-2 border-sariyellowlight p-6 text-lg
+}
+.accordion-content.open {
+    display: block;
 }
