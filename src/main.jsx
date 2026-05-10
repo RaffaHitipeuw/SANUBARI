@@ -5,6 +5,7 @@ import Hero from './components/sections/Hero.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Layout from './components/layout/Layout.jsx'
 import LandingPage from './pages/LandingPage.jsx'
+import LoginPage from "./pages/LoginPage";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<Layout/>}>
           <Route element={<LandingPage/>} index/>
+          <Route path="/login" element={<LoginPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
