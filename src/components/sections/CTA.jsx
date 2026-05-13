@@ -8,7 +8,7 @@ export default function CTA() {
                 <Badges type={'maa'} className={'bottom-[36%] left-[34%] absolute text-sariyellowlight w-26'} />
                 <Badges type={'ht'} className={'top-[24%] right-[16%] absolute text-sariredlight w-26'} />
             </span>
-            <button className="relative top-[-6%] right-[-10%] z-4 bg-sariwhite px-18 py-6 text-2xl rounded-3xl border border-sariblack cursor-pointer hover:scale-105 transition-all duration-112">Daftar Sekarang!</button>
+            <button className="relative top-[-6%] right-[-10%] z-4 bg-white px-18 py-6 text-2xl rounded-3xl border border-sariblack cursor-pointer hover:scale-105 transition-all duration-112">Daftar Sekarang!</button>
             <span className="w-full h-full absolute flex justify-center items-center">
                 <h1 className="top-[24%] left-[18%] absolute font-mr tracking-tighter text-[96px] font-semibold">Praktis,</h1>
                 <h1 className="bottom-[30%] left-[30%] absolute font-mr tracking-tighter text-[96px] font-semibold">Mudah,</h1>

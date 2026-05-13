@@ -8,10 +8,9 @@ export default function FAQ() {
                 <h1 className="heading-1">Masih Bingung?</h1>
             </div>
             <div className="flex flex-col col-span-9 gap-6">
+                <Accordion title={'Raffa Hittipeuw'} content={"MA'AM oasfomweofmowefoi asfmw wefk wefkmwefgw wegkjwenf wekm ewfk asdnjas"} arrowBadge={'maa'} arrowPosition={'right'} />
+                <Accordion title={'Raffa Hittipeuw'} content={"MA'AM oasfomweofmowefoi asfmw wefk wefkmwefgw wegkjwenf wekm ewfk asdnjas"} arrowBadge={'rtt'} arrowPosition={'left'} />
                 <Accordion title={'Raffa Hittipeuw'} content={"MA'AM oasfomweofmowefoi asfmw wefk wefkmwefgw wegkjwenf wekm ewfk asdnjas"} arrowBadge={'ht'} arrowPosition={'right'} />
-                <Accordion title={'Raffa Hittipeuw'} content={"MA'AM oasfomweofmowefoi asfmw wefk wefkmwefgw wegkjwenf wekm ewfk asdnjas"} arrowBadge={'ht'} arrowPosition={'left'} />
-                <Accordion title={'Raffa Hittipeuw'} content={"MA'AM oasfomweofmowefoi asfmw wefk wefkmwefgw wegkjwenf wekm ewfk asdnjas"} arrowBadge={'ht'} arrowPosition={'right'} />
-                <Accordion title={'Raffa Hittipeuw'} content={"MA'AM oasfomweofmowefoi asfmw wefk wefkmwefgw wegkjwenf wekm ewfk asdnjas"} arrowBadge={'ht'} arrowPosition={'left'} />
             </div>
         </section>
     )

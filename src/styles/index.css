@@ -9,6 +9,7 @@
     --color-saribluelight: #CAFFFA;
     --color-sariblue: #91C6C2;
     --color-sariyellowlight: #FAE7CA;
+    --color-sariyellowdark: #EDDBC0;
     --color-sariyellow: #C8B9A2;
     --color-sariblack: #191C1E;
     --color-sariwhite: #F9F9F5;
@@ -140,4 +141,10 @@ html.lenis body {
 
 .lenis.lenis-smooth iframe {
     pointer-events: none;
+}
+
+
+/* DASHBOARD */
+.dsh-cards {
+    @apply bg-sariwhite
 }
