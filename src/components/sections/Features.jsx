@@ -16,7 +16,7 @@ export default function Features(){
                     </span>
                     <div className="card-desc">
                         <h1>Real-time Tracking</h1>
-                        <p>Pantau perubahan detak jantung Anda secara langsung dengan teknologi sensor kamera termutakhir.</p>
+                        <p className="text-base/[145%]">Pantau perubahan detak jantung Anda secara langsung dengan teknologi sensor kamera termutakhir.</p>
                     </div>
                 </div>
                 <div className="card bg-sariyellowlight">
@@ -26,7 +26,7 @@ export default function Features(){
                     </span>
                     <div className="card-desc">
                         <h1>Medical AI Assistant</h1>
-                        <p>Dapatkan ringkasan kesehatan cerdas dan saran gaya hidup dari asisten AI medis kami.</p>
+                        <p className="text-base/[145%]">Dapatkan ringkasan kesehatan cerdas dan saran gaya hidup dari asisten AI medis kami.</p>
                     </div>
                 </div>
                 <div className="card bg-sariredlight">
@@ -36,7 +36,7 @@ export default function Features(){
                     </span>
                     <div className="card-desc">
                         <h1>Health Trends</h1>
-                        <p>Lihat perkembangan kesehatan Anda melalui grafik visual yang mudah dipahami setiap minggunya.</p>
+                        <p className="text-base/[145%]">Lihat perkembangan kesehatan Anda melalui grafik visual yang mudah dipahami setiap minggunya.</p>
                     </div>
                 </div>
             </div>

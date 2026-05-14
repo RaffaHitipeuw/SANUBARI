@@ -12,6 +12,7 @@
     --color-sariyellowdark: #EDDBC0;
     --color-sariyellow: #C8B9A2;
     --color-sariblack: #191C1E;
+    --color-sarigray: #45464D;
     --color-sariwhite: #F9F9F5;
     --font-mr: Manrope, sans-serif;
     --font-int: Inter, sans-serif;
@@ -44,10 +45,6 @@ body,
 html {
     -ms-overflow-style: none;
     scrollbar-width: none;
-}
-
-p {
-    @apply text-base/[145%];
 }
 
 .main-btn {
@@ -146,5 +143,5 @@ html.lenis body {
 
 /* DASHBOARD */
 .dsh-cards {
-    @apply bg-sariwhite
+    @apply p-6 rounded-3xl border
 }

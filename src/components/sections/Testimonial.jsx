@@ -24,7 +24,7 @@ export default function Testimonial() {
                         <h2>CEO at PT. Pujasera</h2>
                     </div>
                     <div className="flex flex-col justify-between pr-14 py-10 relative overflow-clip rounded-r-[56px]">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi explicabo quo saepe vel. Iure laborum autem quam, similique, esse optio vero velit quia blanditiis, a vel obcaecati quos sunt laboriosam?</p>
+                        <p className="text-base/[145%]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi explicabo quo saepe vel. Iure laborum autem quam, similique, esse optio vero velit quia blanditiis, a vel obcaecati quos sunt laboriosam?</p>
                         <span className="testimonial-star">
                             <StarFill className={'w-4 h-auto'} />
                             <StarFill className={'w-4 h-auto'} />
@@ -42,7 +42,7 @@ export default function Testimonial() {
                         <h2>CEO at PT. Pujasera</h2>
                     </div>
                     <div className="flex flex-col justify-between pr-14 py-10 relative overflow-clip rounded-r-[56px]">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi explicabo quo saepe vel. Iure laborum autem quam, similique, esse optio vero velit quia blanditiis, a vel obcaecati quos sunt laboriosam?</p>
+                        <p className="text-base/[145%]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi explicabo quo saepe vel. Iure laborum autem quam, similique, esse optio vero velit quia blanditiis, a vel obcaecati quos sunt laboriosam?</p>
                         <span className="testimonial-star">
                             <StarFill className={'w-4 h-auto'} />
                             <StarFill className={'w-4 h-auto'} />
@@ -60,7 +60,7 @@ export default function Testimonial() {
                         <h2>CEO at PT. Pujasera</h2>
                     </div>
                     <div className="flex flex-col justify-between pr-14 py-10 relative overflow-clip rounded-r-[56px]">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi explicabo quo saepe vel. Iure laborum autem quam, similique, esse optio vero velit quia blanditiis, a vel obcaecati quos sunt laboriosam?</p>
+                        <p className="text-base/[145%]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi explicabo quo saepe vel. Iure laborum autem quam, similique, esse optio vero velit quia blanditiis, a vel obcaecati quos sunt laboriosam?</p>
                         <span className="testimonial-star">
                             <StarFill className={'w-4 h-auto'} />
                             <StarFill className={'w-4 h-auto'} />
