@@ -161,3 +161,27 @@ main {
 .bubble-chat.botinput {
     @apply bg-sariwhite text-sariblack border border-sariblack/14 rounded-2xl rounded-tl-none
 }
+
+/* Background Feature */
+.bg-marquee-wrapper {
+    display: flex;
+    flex-direction: column;
+    animation: scrollDown 25s linear infinite;
+    line-height: 0;
+  }
+
+  @keyframes scrollDown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+  
+  .bg-marquee-wrapper svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+  }

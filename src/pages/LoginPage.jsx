@@ -1,19 +1,20 @@
 import { signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router";
 import { auth, provider } from "../../firebase-config.js";
 import { Badges } from "../components/sections/Assets";
 
 export default function LoginPage() {
 
+  const navigate = useNavigate();
   const handleLogin = async () => {
     try {
+  
       const result = await signInWithPopup(auth, provider);
-
+  
       console.log("User Info:", result.user);
-
-      alert("berhasil");
-
-      // window.location.href = "/dashboard";
-
+      
+      navigate('/dashboard');
+  
     } catch (error) {
       if (
         error.code === "auth/cancelled-popup-request" ||
