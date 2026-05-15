@@ -10,6 +10,8 @@ export default function LayoutDashboard() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const location = useLocation();
+  const [open, setOpen] = useState(false)
+  const [infoOpen, setInfoOpen] = useState(false)
 
   const navItems = [
     { name: 'Home', icon: Home, path: '/dashboard' },
@@ -19,12 +21,10 @@ export default function LayoutDashboard() {
     { name: 'Chatbot', icon: BotMessageSquare, path: '/dashboard/chatbot' },
   ];
 
-  const [open, setOpen] = useState(false)
-
   return (
     <div className='flex gap-4 h-screen overflow-hidden bg-sariwhite'>
       <div className="pr-0 p-4 h-full">
-        <header className={`${open ? 'w-[20vw]' : 'w-max'} flex flex-col gap-4 justify-between h-full`} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+        <header className={`${open ? 'w-[20vw]' : 'w-max'} flex flex-col gap-4 justify-between h-full transition-all duration-500`} onMouseEnter={() => setOpen(true)} onMouseLeave={() => {setOpen(false); setInfoOpen(false)}}>
           <nav className="bg-white overflow-clip border border-sariblack/14 h-full rounded-2xl flex flex-col items-stretch justify-between">
             <NavLink to={'/profile'} className='flex gap-4 items-center p-4'>
               <span className='block w-12 h-12 p-2 border border-sariblack/14 rounded-full bg-white'>
@@ -42,8 +42,14 @@ export default function LayoutDashboard() {
               <li><NavLink className={'bg-sarired/14 text-sarired flex items-center h-14 px-8 gap-2 text-base'}><LogOut size={18} />{open && 'Log Out'}</NavLink></li>
             </ul>
           </nav>
-          <button className="w-12 aspect-square flex items-center justify-center rounded-2xl border border-sariblack/14 text-sariblack/40 cursor-pointer">
-            <Info size={20}/>
+          <button onClick={() => {open ? setInfoOpen(!infoOpen) : false}} className={`${infoOpen ? 'w-full h-max' : 'w-12'} aspect-square flex flex-col items-center justify-center rounded-2xl border border-sariblack/14 text-sariblack/40 cursor-pointer`}>
+            {infoOpen == false && <Info size={20}/>}
+            {open && infoOpen && (
+              <>
+                <p>SANUBARI</p>
+                <p>© 2026 SANUBARI. Medical Disclaimer: For informational purposes only. Selalu konsultasikan kondisi kesehatan Anda dengan tenaga medis profesional.</p>
+              </>
+            )}
           </button>
         </header>
       </div>

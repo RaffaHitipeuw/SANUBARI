@@ -1,18 +1,23 @@
 import { BriefcaseMedical, Heart, Info, Lightbulb, Mic, Paperclip, Send, Utensils } from "lucide-react";
+import { useState } from "react";
 
 export default function ChatbotPage() {
+    const [infoChat, setInfoChat] = useState(false)
     return (
         <div className="w-full grid grid-cols-12 grid-rows-[auto_1fr_auto] gap-4 h-full chatpage">
-            <div className="bg-white col-span-12 px-6 py-4 flex justify-between items-center border rounded-3xl border-sariblack/14">
+            <div className="relative bg-white col-span-12 px-6 py-4 flex justify-between items-center border rounded-3xl border-sariblack/14">
                 <span className="flex gap-4 items-center">
-                    <img src="/src/assets/images/testimonial-user.png" alt="" className="w-14 aspect-square object-cover" />
+                    <img src="/src/assets/images/sari-profile.png" alt="" className="w-14 aspect-square object-cover rounded-full border-3 p-1 border-sariblue" />
                     <span>
                         <h2 className="text-xl font-mr font-semibold">SariAI</h2>
                         <h3 className="text-sm text-sarigray">Konsultan AI Kesehatan Jantung</h3>
                     </span>
                 </span>
-                <button className="aspect-square flex items-center justify-center rounded-2xl text-sariblack/40 cursor-pointer p-4 hover:bg-sariblack/8">
-                    <Info size={20}/>
+                <button onClick={() => setInfoChat(!infoChat)} className={`absolute top-4 right-6 flex items-center justify-center rounded-2xl text-sariblack/40 cursor-pointer z-999 p-4 ${infoChat ? 'w-66 bg-white dsh-cards flex-col gap-4' : 'hover:bg-sariblack/8'} `}>
+                    <Info size={infoChat ? 56 : 20} className={infoChat && 'text-sarired'}/>
+                    <p className={infoChat ? 'block text-sm' : 'hidden'}>SariAI adalah generatif AI kami sebagai sarana konsultasi Instan,</p>
+                    <p className={infoChat ? 'block text-sm' : 'hidden'}>SariAI adalah asisten informasi, bukan pengganti diagnosa medis profesional.</p>
+                    <p className={infoChat ? 'block text-sm' : 'hidden'}><b>Dalam keadaan darurat, segera hubungi layanan medis setempat.</b></p>
                 </button>
             </div>
             <div className="relative col-span-8 px-6 py-2 flex flex-col gap-6 overflow-auto">
