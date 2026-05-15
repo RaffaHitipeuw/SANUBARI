@@ -11,6 +11,7 @@ import Home from './components/dashboard-pages/Home.jsx'
 import CameraPage from './components/dashboard-pages/Camera.jsx'
 import InsightPage from './components/dashboard-pages/Insight.jsx'
 import Blog from './components/dashboard-pages/Blog.jsx'
+import ChatbotPage from './components/dashboard-pages/Chatbot.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/dashboard/camera' element={<CameraPage/>}/>
           <Route path='/dashboard/insights' element={<InsightPage/>}/>
           <Route path='/dashboard/blog' element={<Blog/>}/>
+          <Route path='/dashboard/chatbot' element={<ChatbotPage/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

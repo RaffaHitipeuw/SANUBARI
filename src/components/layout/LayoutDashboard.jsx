@@ -38,13 +38,12 @@ export default function LayoutDashboard() {
               ))}
             </ul>
             <ul className='flex flex-col border-t border-sariblack/14'>
-              <li><NavLink className={'flex items-center h-14 px-8 gap-2 text-base hover:bg-sariblack/8 transition duration-75'}><Bolt size={18} />{open && 'Settings'}</NavLink></li>
               <li><NavLink className={'flex items-center h-14 px-8 gap-2 text-base hover:bg-sariblack/8 transition duration-75'}><CircleQuestionMark size={18} />{open && 'Support'}</NavLink></li>
               <li><NavLink className={'bg-sarired/14 text-sarired flex items-center h-14 px-8 gap-2 text-base'}><LogOut size={18} />{open && 'Log Out'}</NavLink></li>
             </ul>
           </nav>
           <button className="w-12 aspect-square flex items-center justify-center rounded-2xl border border-sariblack/14 text-sariblack/40 cursor-pointer">
-            <Info size={18}/>
+            <Info size={20}/>
           </button>
         </header>
       </div>

@@ -5,7 +5,7 @@ export default function InsightPage() {
     return (
         <div className="w-full grid grid-cols-12 gap-4 mt-2">
             {/* HEADING */}
-            <div className="col-span-12 px-6 py-2 flex gap-4 justify-between items-center">
+            <div className="bg-white col-span-12 px-6 py-2 flex gap-4 justify-between items-center">
                 <div className="flex flex-col gap-2">
                     <h1 className="text-4xl font-semibold font-mr text-sariblack">Insight Kesehatan Anda</h1>
                     <p className="text-sarigray text-base font-int">Pantau perkembangan ritme jantung dan analisis kebugaran harian Anda untuk hidup yang lebih sehat.</p>
@@ -15,10 +15,10 @@ export default function InsightPage() {
             </div>
 
             {/* INI BUAT YANG DATA INSIGHT! JAN BIKIN SECTION BARU! RAPA! */}
-            <div className="dsh-cards border-sariblack/14 col-span-12 h-[80vh]"></div>
+            <div className="bg-white dsh-cards border-sariblack/14 col-span-12 h-[80vh]"></div>
 
             {/* INI CARD REKOMEN YANG DIGENERATE AI */}
-            <div className="dsh-cards flex flex-col gap-4 border-sariblack/14 col-span-8">
+            <div className="bg-white dsh-cards flex flex-col gap-4 border-sariblack/14 col-span-8">
                 <div className="flex items-center gap-4">
                     <span className="bg-sarired font-bold tracking-wider text-white uppercase px-4 py-1 rounded-full">Harian</span>
                     <h1 className="text-2xl font-mr font-semibold">Rekomendasi Aktivitas</h1>
@@ -32,7 +32,7 @@ export default function InsightPage() {
             </div>
 
             {/* ARTIKEL CARD */}
-            <Link to={'/dashboard/blog'} className="h-[52vh] flex flex-col rounded-3xl border bg-white border-sariblack/14 col-span-4 row-span-1 overflow-clip relative">
+            <Link to={'/dashboard/blog'} className="bg-white h-[52vh] flex flex-col rounded-3xl border bg-white border-sariblack/14 col-span-4 row-span-1 overflow-clip relative">
                 <img src="/src/assets/images/testimonial-user.png" alt="" className="w-full h-50 object-cover" />
                 <span className="absolute top-4 left-4 bg-sariwhite border border-sariblack/14 text-sariblack font-bold tracking-wider px-3 py-1 rounded-lg text-sm uppercase">REKOMENDASI ARTIKEL</span>
                 <div className="flex flex-col gap-2 p-6 h-full">

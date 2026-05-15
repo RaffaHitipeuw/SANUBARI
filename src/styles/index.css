@@ -149,3 +149,15 @@ main {
 .dsh-cards {
     @apply p-6 rounded-3xl border
 }
+.chatpage * {
+    scrollbar-width: none;
+}
+.bubble-chat {
+    @apply text-base/[145%] max-w-[90%] px-6 py-4
+}
+.bubble-chat.userinput {
+    @apply bg-sariblue text-white rounded-2xl rounded-tr-none
+}
+.bubble-chat.botinput {
+    @apply bg-sariwhite text-sariblack border border-sariblack/14 rounded-2xl rounded-tl-none
+}

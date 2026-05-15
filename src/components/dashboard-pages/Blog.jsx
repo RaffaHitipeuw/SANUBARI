@@ -11,7 +11,7 @@ export default function Blog() {
                 </div>
                 <span className="flex items-center w-full relative">
                     <Search size={18} className="absolute left-6"/>
-                    <input type="text" placeholder="Cari Artikel Kesehatan" className="text-base text-sariblack w-full pl-16.5 pr-6 py-4 bg-white border border-sariblack/14 rounded-3xl" />
+                    <input type="text" placeholder="Cari Artikel Kesehatan" className="text-base text-sariblack placeholder:text-sariblack/40 w-full pl-16.5 pr-6 py-4 bg-white border border-sariblack/14 rounded-3xl" />
                 </span>
                 <span className="flex gap-4 w-full *:transition-colors *:duration-100">
                     <span className="bg-sarired cursor-pointer hover:bg-sarired text-white px-6 py-2 rounded-full">Semua</span>
