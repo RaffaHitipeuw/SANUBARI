@@ -126,14 +126,14 @@ export default function Home() {
                     <Badges type={'rtt'} className={'text-sariwhite/60 w-16 h-auto'} />
                     <BotMessageSquare size={24} className="absolute text-sariblue" />
                 </span>
-                <h1 className="text-xl font-semibold font-mr text-sariblack z-2">Chat with AI Consultant</h1>
-                <p className="text-sm text-sarigray z-2">Instant medical advice powered by AI.</p>
-                <NavLink to={'/dashboard/chatbot'} className={'flex items-center gap-2 py-3 px-6 rounded-2xl bg-sariwhite/60 mt-4 font-semibold text-sariblue border border-sariblue z-2'}>Start Session<ArrowRight size={16}/></NavLink>
+                <h1 className="text-xl font-semibold font-mr text-sariblack z-2">Konsultasi dengan AI</h1>
+                <p className="text-sm text-sarigray z-2">Dapatkan saran medis instan oleh AI.</p>
+                <NavLink to={'/dashboard/chatbot'} className={'flex items-center gap-2 py-3 px-6 rounded-2xl bg-sariwhite/60 mt-4 font-semibold text-sariblue border border-sariblue z-2'}>Mulai Sesi<ArrowRight size={16}/></NavLink>
                 <BotMessageSquare size={144} className="absolute -bottom-4 -right-4 -rotate-16 text-sariblue" />
             </div>
             <NavLink to={'/dashboard/blog'} className="flex flex-col rounded-3xl border bg-white border-sariblack/14 col-span-4 row-span-1 overflow-clip relative">
                 <img src="/src/assets/images/testimonial-user.png" alt="" className="w-full h-40 object-cover" />
-                <span className="absolute top-6 right-6 bg-sariredlight text-sarired font-bold px-3 py-1 rounded-lg text-sm">NEW ARTICLE</span>
+                <span className="absolute top-4 left-4 bg-sariredlight text-sarired font-bold px-3 py-1 rounded-lg text-sm">NEW ARTICLE</span>
                 <div className="flex flex-col gap-2 p-6">
                     <h1 className="text-xl font-mr font-semibold">5 Tips Jantung Sehat di Usia 30-an</h1>
                     <h2 className="text-sm text-sarigray">Read by 2,400+ users today</h2>
