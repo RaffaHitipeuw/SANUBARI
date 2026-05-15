@@ -77,9 +77,9 @@ export default function Home() {
 
     return (
         <div className="w-full grid grid-cols-12 gap-4 mt-2">
-            <div className="col-span-12 px-6 py-2 flex flex-col gap-1">
+            <div className="col-span-12 px-6 py-2 flex flex-col gap-2">
                 <h1 className="text-4xl font-semibold font-mr text-sariblack">Halo, Ahmad Fauzi!</h1>
-                <p className="text-sarigray text-lg font-int">Jantung Anda hari ini terlihat sehat.</p>
+                <p className="text-sarigray text-base font-int">Jantung Anda hari ini terlihat sehat.</p>
             </div>
             <div className="dsh-cards border-sariblack/14 col-span-8 row-span-2 bg-white p-6 flex flex-col justify-between h-full">
                 <div className="flex justify-between items-start mb-4">
@@ -131,7 +131,7 @@ export default function Home() {
                 <NavLink to={'/dashboard/chatbot'} className={'flex items-center gap-2 py-3 px-6 rounded-2xl bg-sariwhite/60 mt-4 font-semibold text-sariblue border border-sariblue z-2'}>Start Session<ArrowRight size={16}/></NavLink>
                 <BotMessageSquare size={144} className="absolute -bottom-4 -right-4 -rotate-16 text-sariblue" />
             </div>
-            <NavLink to={'/dashboard/blog'} className="rounded-3xl border bg-white border-sariblack/14 col-span-4 row-span-1 overflow-clip relative">
+            <NavLink to={'/dashboard/blog'} className="flex flex-col rounded-3xl border bg-white border-sariblack/14 col-span-4 row-span-1 overflow-clip relative">
                 <img src="/src/assets/images/testimonial-user.png" alt="" className="w-full h-40 object-cover" />
                 <span className="absolute top-6 right-6 bg-sariredlight text-sarired font-bold px-3 py-1 rounded-lg text-sm">NEW ARTICLE</span>
                 <div className="flex flex-col gap-2 p-6">
@@ -139,7 +139,7 @@ export default function Home() {
                     <h2 className="text-sm text-sarigray">Read by 2,400+ users today</h2>
                 </div>
             </NavLink>
-            <div className="dsh-cards bg-white border-sariblack/14 col-span-12 row-span-2"></div>
+            <div className="dsh-cards bg-white border-sariblack/14 col-span-12 row-span-2 p-6"></div>
         </div>
     );
 }

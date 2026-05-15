@@ -142,6 +142,9 @@ html.lenis body {
 
 
 /* DASHBOARD */
+main {
+    scrollbar-width: none;
+}
 .dsh-cards {
     @apply p-6 rounded-3xl border
 }

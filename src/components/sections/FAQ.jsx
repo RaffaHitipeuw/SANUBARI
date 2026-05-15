@@ -2,7 +2,7 @@ import Accordion from "../accordion/Accordion";
 
 export default function FAQ() {
     return(
-        <section className="grid grid-cols-12 px-40 gap-6">
+        <section className="grid grid-cols-12 px-40 gap-6 py-20">
             <div className="chip-title text-left col-span-3 justify-start">
                 <span className="chip text-sariblue">FAQ</span>
                 <h1 className="heading-1">Masih Bingung?</h1>

@@ -5,7 +5,7 @@ export default function Testimonial() {
     return(
         <section className="relative items-center justify-center flex flex-col gap-12 bg-sariwhite py-28">
             <div className="chip-title text-center items-center">
-                <span className="chip text-sariblue">Testimoni</span>
+                <span className="chip text-sarired">Testimoni</span>
                 <h1 className="heading-1">Kata Mereka</h1>
             </div>
             <div className="relative flex items-center justify-center">
