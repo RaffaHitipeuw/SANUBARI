@@ -20,8 +20,6 @@ export default function LayoutDashboard() {
     { name: 'Blog', icon: Newspaper, path: '/dashboard/blog' },
     { name: 'Chatbot', icon: BotMessageSquare, path: '/dashboard/chatbot' },
   ];
-
-  const [open, setOpen] = useState(false)
   
   useEffect(() => {
   
