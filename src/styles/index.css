@@ -33,6 +33,7 @@ body {
 }
 
 body {
+    font-synthesis: none;
     @apply font-int bg-sariwhite text-sariblack;
 }
 

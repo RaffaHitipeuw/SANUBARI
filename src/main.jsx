@@ -10,6 +10,7 @@ import LayoutDashboard from './components/layout/LayoutDashboard.jsx'
 import Home from './components/dashboard-pages/Home.jsx'
 import CameraPage from './components/dashboard-pages/Camera.jsx'
 import InsightPage from './components/dashboard-pages/Insight.jsx'
+import Blog from './components/dashboard-pages/Blog.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
           <Route index element={<Home/>}/>
           <Route path='/dashboard/camera' element={<CameraPage/>}/>
           <Route path='/dashboard/insights' element={<InsightPage/>}/>
+          <Route path='/dashboard/blog' element={<Blog/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
