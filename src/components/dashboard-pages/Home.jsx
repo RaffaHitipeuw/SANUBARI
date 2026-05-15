@@ -1,14 +1,25 @@
 import { ArrowRight, BotMessageSquare } from "lucide-react";
 import { Badges } from "../sections/Assets";
 import { NavLink } from "react-router";
-import React, { useEffect, useRef } from 'react';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../../firebase-config";
+import React, { useEffect, useRef, useState  } from 'react';
+
 
 export default function Home() {
+    const [userName, setUserName] = useState("");
     const canvasRef = useRef(null);
     const bpmRef = useRef(null);
     const bpmStateRef = useRef({ current: 72, target: 72, display: 72 });
 
     useEffect(() => {
+
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUserName(user.displayName);
+            }
+        });
+    
         const canvas = canvasRef.current;
         const bpmEl = bpmRef.current;
 
@@ -73,12 +84,13 @@ export default function Home() {
         }
 
         draw();
-    }, []);
+        return () => unsubscribe();
+        }, []);
 
     return (
         <div className="w-full grid grid-cols-12 gap-4 mt-2">
             <div className="col-span-12 px-6 py-2 flex flex-col gap-2">
-                <h1 className="text-4xl font-semibold font-mr text-sariblack">Halo, Ahmad Fauzi!</h1>
+            <h1 className="text-4xl font-semibold font-mr text-sariblack">Halo, {userName}!</h1>
                 <p className="text-sarigray text-base font-int">Jantung Anda hari ini terlihat sehat.</p>
             </div>
             <div className="dsh-cards border-sariblack/14 col-span-8 row-span-2 bg-white p-6 flex flex-col justify-between h-full">

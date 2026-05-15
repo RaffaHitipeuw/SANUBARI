@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../../firebase-config";
 import { Outlet, Link, useLocation, NavLink } from 'react-router';
-import { 
-  Home, Camera, ChartColumnBig, Newspaper, BotMessageSquare, LogOut, Info, 
-  Bolt, CircleQuestionMark
-} from 'lucide-react';
+import { Home, Camera, ChartColumnBig, Newspaper, BotMessageSquare, LogOut, Info, Bolt, CircleQuestionMark} from 'lucide-react';
 import { Logo } from '../sections/Assets';
 
 export default function LayoutDashboard() {
+  const [userName, setUserName] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const location = useLocation();
@@ -20,6 +20,20 @@ export default function LayoutDashboard() {
   ];
 
   const [open, setOpen] = useState(false)
+  
+  useEffect(() => {
+  
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    
+      if (user) {
+        setUserName(user.displayName);
+      }
+    
+    });
+  
+    return () => unsubscribe();
+  
+  }, []);
 
   return (
     <div className='flex gap-4 h-screen overflow-hidden bg-sariwhite'>
@@ -30,7 +44,7 @@ export default function LayoutDashboard() {
               <span className='block w-12 h-12 p-2 border border-sariblack/14 rounded-full bg-white'>
                 <Logo className={'text-sarired'}/>
               </span>
-              {open && <h2 className='font-mr font-semibold text-lg'>John Doe</h2>}
+              {open && <h2 className='font-mr font-semibold text-lg'>{userName}</h2>}
             </NavLink>
             <ul className='flex flex-col h-full gap-2 p-4'>
               {navItems.map((item, index) => (
