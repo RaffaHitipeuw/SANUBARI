@@ -12,6 +12,7 @@ export default function LayoutDashboard() {
   const location = useLocation();
   const [open, setOpen] = useState(false)
   const [infoOpen, setInfoOpen] = useState(false)
+  const [menuHover, setMenuHover] = useState(false)
 
   const navItems = [
     { name: 'Home', icon: Home, path: '/dashboard' },
@@ -36,27 +37,27 @@ export default function LayoutDashboard() {
   }, []);
 
   return (
-    <div className='flex gap-4 h-screen overflow-hidden bg-sariwhite'>
-      <div className="pr-0 p-4 h-full">
-      <header className={`${open ? 'w-[20vw]' : 'w-max'} flex flex-col gap-4 justify-between h-full transition-[width] duration-[1000ms] ease-[cubic-bezier(0.3,1,0.2,1)]`}onMouseEnter={() => setOpen(true)} onMouseLeave={() => {setOpen(false); setInfoOpen(false)}}>
-          <nav className="bg-white overflow-clip border border-sariblack/14 h-full rounded-2xl flex flex-col items-stretch justify-between">
-            <NavLink to={'/profile'} className='flex items-center p-4'>
+    <div className='flex max-sm:flex-col gap-4 h-screen overflow-hidden bg-sariwhite'>
+      <div className="pr-0 max-sm:pr-4 p-4 h-full max-sm:h-max max-sm:w-full max-sm:absolute max-sm:bottom-0 max-sm:z-999">
+        <header className={`${open ? 'w-[20vw] max-sm:w-full' : 'w-max max-sm:w-full'} flex flex-col max-sm:flex-row gap-4 justify-between h-full transition-[width] duration-1000 ease-[cubic-bezier(0.3,1,0.2,1)]`} onMouseEnter={() => setOpen(true)} onMouseLeave={() => {setOpen(false); setInfoOpen(false)}}>
+          <nav className="bg-white overflow-clip border border-sariblack/14 h-full max-sm:h-max max-sm:w-full rounded-2xl flex flex-col max-sm:flex-row items-stretch justify-between">
+            <NavLink to={'/profile'} className='flex items-center p-4 max-sm:hidden'>
               <span className='block w-12 h-12 p-2 border border-sariblack/14 rounded-full bg-white'>
                 <Logo className={'text-sarired'}/>
               </span>
               <h2 className={`${open ? 'ml-4 w-5' : 'w-0 opacity-0'} whitespace-nowrap font-mr font-semibold text-lg transition-all duration-500`}>{userName}</h2>
             </NavLink>
-            <ul className='flex flex-col h-full gap-2 p-4'>
+            <ul className='flex flex-col max-sm:flex-row h-full gap-2 max-sm:gap-1 p-4 max-sm:p-2 relative max-sm:justify-between max-sm:w-full max-sm:overflow-auto' style={{scrollbarWidth: 'none'}}>
               {navItems.map((item, index) => (
-                <li key={index}><NavLink to={item.path} className={'border border-transparent hover:border-sarired hover:bg-sarired/14 rounded-2xl hover:text-sarired transition duration-75 flex items-center px-4 h-14 text-base'}><item.icon size={18} /><span className={`${open ? 'ml-2 w-5' : 'w-0 opacity-0'} whitespace-nowrap transition-all duration-500`}>{item.name}</span></NavLink></li>
+                <li key={index}><NavLink to={item.path} className={'border border-transparent hover:border-sarired hover:bg-sarired/14 rounded-2xl max-sm:rounded-xl hover:text-sarired transition duration-75 flex items-center max-sm:justify-center px-4 max-sm:p-0 h-14 text-base max-sm:aspect-square max-sm:size-14'}><item.icon size={18} /><span className={`${open ? 'ml-2 max-sm:ml-0 w-5 max-sm:w-max' : 'w-0 max-sm:w-max opacity-0 max-sm:opacity-100'} whitespace-nowrap transition-all duration-500 max-sm:absolute max-sm:top-0 max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:block max-sm:py-1 max-sm:border max-sm:border-sariblack/14 max-sm:bg-white max-sm:hover:text-sariblack max-sm:rounded-full max-sm:px-4`}>{item.name}</span></NavLink></li>
               ))}
             </ul>
-            <ul className='flex flex-col border-t border-sariblack/14'>
+            <ul className='flex flex-col border-t border-sariblack/14 max-sm:hidden'>
               <li><NavLink className={'flex items-center h-14 px-8 text-base hover:bg-sariblack/8 transition duration-75'}><CircleQuestionMark size={18} /><span className={`${open ? 'ml-2 w-5' : 'w-0 opacity-0'} whitespace-nowrap transition-all duration-500`}>Support</span></NavLink></li>
               <li><NavLink className={'bg-sarired/14 text-sarired flex items-center h-14 px-8 text-base'}><LogOut size={18} /><span className={`${open ? 'ml-2 w-5' : 'w-0 opacity-0'} whitespace-nowrap transition-all duration-500`}>Log Out</span></NavLink></li>
             </ul>
           </nav>
-          <button onClick={() => {open ? setInfoOpen(!infoOpen) : false}} className={`${infoOpen ? 'w-full h-max' : 'w-12'} aspect-square flex flex-col items-center justify-center rounded-2xl border border-sariblack/14 text-sariblack/40 cursor-pointer`}>
+          <button onClick={() => {open ? setInfoOpen(!infoOpen) : false}} className={`${infoOpen ? 'w-full h-max' : 'w-12'} aspect-square flex flex-col items-center justify-center rounded-2xl border border-sariblack/14 text-sariblack/40 cursor-pointer max-sm:hidden`}>
             {infoOpen == false && <Info size={20}/>}
             {open && infoOpen && (
               <>
