@@ -27,7 +27,7 @@ export default function LayoutDashboard() {
     
       if (user) {
         setUserName(user.displayName);
-      }
+      } 
     
     });
   
