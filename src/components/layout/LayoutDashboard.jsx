@@ -38,7 +38,7 @@ export default function LayoutDashboard() {
   return (
     <div className='flex gap-4 h-screen overflow-hidden bg-sariwhite'>
       <div className="pr-0 p-4 h-full">
-        <header className={`${open ? 'w-[20vw]' : 'w-max'} flex flex-col gap-4 justify-between h-full transition-all duration-500`} onMouseEnter={() => setOpen(true)} onMouseLeave={() => {setOpen(false); setInfoOpen(false)}}>
+      <header className={`${open ? 'w-[20vw]' : 'w-max'} flex flex-col gap-4 justify-between h-full transition-[width] duration-[1000ms] ease-[cubic-bezier(0.3,1,0.2,1)]`}onMouseEnter={() => setOpen(true)} onMouseLeave={() => {setOpen(false); setInfoOpen(false)}}>
           <nav className="bg-white overflow-clip border border-sariblack/14 h-full rounded-2xl flex flex-col items-stretch justify-between">
             <NavLink to={'/profile'} className='flex items-center p-4'>
               <span className='block w-12 h-12 p-2 border border-sariblack/14 rounded-full bg-white'>

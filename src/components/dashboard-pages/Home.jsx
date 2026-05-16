@@ -1,10 +1,9 @@
-import { ArrowRight, BotMessageSquare } from "lucide-react";
+import { ArrowRight, BotMessageSquare, Trash2 } from "lucide-react";
 import { Badges } from "../sections/Assets";
 import { NavLink } from "react-router";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../../firebase-config";
 import React, { useEffect, useRef, useState  } from 'react';
-
 
 export default function Home() {
     const [userName, setUserName] = useState("");
@@ -12,8 +11,25 @@ export default function Home() {
     const bpmRef = useRef(null);
     const bpmStateRef = useRef({ current: 72, target: 72, display: 72 });
 
-    useEffect(() => {
+    // Data Dummy untuk Recent Activity
+    const activities = [
+        { date: "Today, 08:45 AM", bpm: "72", status: "NORMAL", note: "Post-morning walk", type: "normal" },
+        { date: "Yesterday, 10:20 PM", bpm: "65", status: "RESTING", note: "Before sleep", type: "resting" },
+        { date: "Yesterday, 04:15 PM", bpm: "115", status: "ELEVATED", note: "Cardio workout", type: "elevated" },
+        { date: "24 Oct, 09:00 AM", bpm: "74", status: "NORMAL", note: "At office desk", type: "normal" },
+        { date: "23 Oct, 11:30 PM", bpm: "62", status: "RESTING", note: "Deep sleep initial", type: "resting" },
+    ];
 
+    const getStatusStyle = (type) => {
+        switch (type) {
+            case 'normal': return 'bg-emerald-50 text-emerald-500 border-emerald-100';
+            case 'resting': return 'bg-cyan-50 text-cyan-500 border-cyan-100';
+            case 'elevated': return 'bg-rose-50 text-rose-500 border-rose-100';
+            default: return 'bg-gray-50 text-gray-500 border-gray-100';
+        }
+    };
+
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUserName(user.displayName);
@@ -85,14 +101,15 @@ export default function Home() {
 
         draw();
         return () => unsubscribe();
-        }, []);
+    }, []);
 
     return (
         <div className="w-full grid grid-cols-12 gap-4 mt-2">
             <div className="col-span-12 px-6 py-2 flex flex-col gap-2">
-            <h1 className="text-4xl font-semibold font-mr text-sariblack">Halo, {userName}!</h1>
+                <h1 className="text-4xl font-semibold font-mr text-sariblack">Halo, {userName}!</h1>
                 <p className="text-sarigray text-base font-int">Jantung Anda hari ini terlihat sehat.</p>
             </div>
+
             <div className="dsh-cards border-sariblack/14 col-span-8 row-span-2 bg-white p-6 flex flex-col justify-between h-full">
                 <div className="flex justify-between items-start mb-4">
                     <div>
@@ -107,12 +124,9 @@ export default function Home() {
 
                 <div className="flex items-center gap-6 flex-1 my-4">
                     <div className="flex items-baseline gap-2">
-                        <div ref={bpmRef} className="text-7xl font-bold text-gray-900 leading-none">
-                            72
-                        </div>
+                        <div ref={bpmRef} className="text-7xl font-bold text-gray-900 leading-none">72</div>
                         <span className="text-gray-400 text-sm font-mr font-semibold mb-2">BPM</span>
                     </div>
-                    
                     <div className="flex-1 h-24">
                         <canvas ref={canvasRef} className="w-full h-full" />
                     </div>
@@ -133,6 +147,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
             <div className="dsh-cards bg-saribluelight border-sariblue col-span-4 row-span-1 flex flex-col items-start gap-2 relative overflow-clip justify-between">
                 <span className="relative flex items-center justify-center z-2">
                     <Badges type={'rtt'} className={'text-sariwhite/60 w-16 h-auto'} />
@@ -143,6 +158,7 @@ export default function Home() {
                 <NavLink to={'/dashboard/chatbot'} className={'flex items-center gap-2 py-3 px-6 rounded-2xl bg-sariwhite/60 mt-4 font-semibold text-sariblue border border-sariblue z-2'}>Mulai Sesi<ArrowRight size={16}/></NavLink>
                 <BotMessageSquare size={144} className="absolute -bottom-4 -right-4 -rotate-16 text-sariblue" />
             </div>
+
             <NavLink to={'/dashboard/blog'} className="flex flex-col rounded-3xl border bg-white border-sariblack/14 col-span-4 row-span-1 overflow-clip relative">
                 <img src="/src/assets/images/testimonial-user.png" alt="" className="w-full h-40 object-cover" />
                 <span className="absolute top-4 left-4 bg-sariredlight text-sarired font-bold px-3 py-1 rounded-lg text-sm">NEW ARTICLE</span>
@@ -151,7 +167,19 @@ export default function Home() {
                     <h2 className="text-sm text-sarigray">Read by 2,400+ users today</h2>
                 </div>
             </NavLink>
-            <div className="dsh-cards bg-white border-sariblack/14 col-span-12 row-span-2 p-6"></div>
+
+            <div className="dsh-cards bg-white border-sariblack/14 col-span-12 row-span-2 p-8">
+                <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-2xl font-semibold font-mr text-sariblack">Recent Activity</h2>
+                    <span className="text-sm font-semibold text-gray-200">View All History</span>
+                </div>
+
+                <div className="w-full h-[1px] bg-gray-50 mb-8"></div>
+
+                <div className="flex items-center justify-center py-24">
+                    <p className="text-gray-200 font-semibold font-mr tracking-wide">No Recent Activity</p>
+                </div>
+            </div>
         </div>
     );
 }
