@@ -153,13 +153,13 @@ main {
     scrollbar-width: none;
 }
 .bubble-chat {
-    @apply text-base/[145%] max-w-[90%] px-6 py-4
+    @apply text-base/[145%] max-w-[50%] px-6 py-4
 }
 .bubble-chat.userinput {
-    @apply bg-sariblue text-white rounded-2xl rounded-tr-none
+    @apply bg-sariblue text-white rounded-2xl rounded-tr-none bg-[#91C6C2]
 }
 .bubble-chat.botinput {
-    @apply bg-sariwhite text-sariblack border border-sariblack/14 rounded-2xl rounded-tl-none
+    @apply bg-sariwhite text-sariblack border border-sariblack/14 rounded-2xl rounded-tl-none bg-white
 }
 
 /* Background Feature */
@@ -186,4 +186,18 @@ main {
     flex-shrink: 0;
   }
 
-  
+  .starburst-badge {
+    background-color: #FF4D4D; /* Adjusted to a vibrant red like sarired */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    clip-path: polygon(
+      50% 0%, 63% 5%, 75% 0%, 82% 12%, 95% 12%, 95% 25%, 
+      100% 37%, 95% 50%, 100% 63%, 95% 75%, 95% 88%, 82% 88%, 
+      75% 100%, 63% 95%, 50% 100%, 37% 95%, 25% 100%, 18% 88%, 
+      5% 88%, 5% 75%, 0% 63%, 5% 50%, 0% 37%, 5% 25%, 
+      5% 12%, 18% 12%, 25% 0%, 37% 5%
+    );
+  }

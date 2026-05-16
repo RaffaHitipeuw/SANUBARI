@@ -276,8 +276,6 @@ export default function LayoutDashboard() {
                     '
                   >
 
-                    Kirim
-
                   </button>
 
                   <button
