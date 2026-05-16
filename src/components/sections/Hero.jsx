@@ -10,33 +10,34 @@ M942.966 594.942L942.963 594.859C941.636 558.624 954.061 523.326 977.532 496.435
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center max-sm:items-start justify-center max-sm:justify-between overflow-hidden max-sm:p-6">
       {/* Excerpts */}
-      <div className="flex flex-col items-center justify-center text-center gap-6">
+      <div className="flex flex-col items-center justify-center text-center max-sm:text-left gap-6">
         <h1 className="heading-1 text-sariblack">
           Monitor Detak Jantung Anda<br/>
           <span className="font-bold text-sarired">Secara Instan</span>
         </h1>
-        <p className='w-120'>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
+        <p className='w-120 max-sm:w-full max-sm:text-sm max-sm:hidden'>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
       </div>
       {/* Animation */}
-      <div className="-z-1 relative flex items-center justify-center w-full h-90">
-        <div className="translate-y-[-30%] z-2 translate-x-[15%] absolute">
+      <div className="-z-1 relative flex items-center justify-center w-full h-90 max-sm:h-30">
+        <div className="max-sm:scale-55 translate-y-[-30%] max-sm:translate-y-[30%] z-2 translate-x-[15%] max-sm:translate-x-[7%] absolute">
           <HeartCard />
         </div>
-        <div className="translate-y-[10%] z-3 scale-45 translate-x-[50%] absolute">
+        <div className="max-sm:scale-20 translate-y-[10%] max-sm:translate-y-[40%] z-3 scale-45 translate-x-[50%] max-sm:translate-x-[7%] absolute">
           <WeeklyChart />
         </div>
-        <div className="translate-y-6 translate-x-[-55%] absolute">
+        <div className="max-sm:scale-50 translate-y-6 max-sm:translate-y-[-5%] translate-x-[-55%] max-sm:translate-x-[-10%] absolute">
           <FaceScanner />
         </div>
       </div>
+      <p className='w-120 max-sm:w-full max-sm:text-sm hidden max-sm:block mt-16'>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
       {/* Button Container */}
-      <div className="flex gap-4 mt-2">
-        <button className="main-btn border border-sariblue text-sariblue">
+      <div className="flex max-sm:flex-col gap-4 mt-2 max-sm:w-full">
+        <button className="main-btn flex items-center justify-center border border-sariblue text-sariblue">
           Pelajari Lebih Lanjut
         </button>
-        <button className="main-btn flex items-center gap-2 bg-sarired text-sariwhite">
+        <button className="main-btn flex items-center justify-center gap-2 bg-sarired text-sariwhite">
           Mulai Sekarang <ArrowRight size={18} />
         </button>
       </div>

@@ -1,4 +1,4 @@
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowDown, ArrowRight, Search } from "lucide-react";
 import { Link } from "react-router";
 
 export default function Blog() {
@@ -38,6 +38,7 @@ export default function Blog() {
                     <Link className="flex items-center gap-2 rounded-2xl" to={'/dashboard'}>Selengkapnya <ArrowRight size={18} /></Link>
                 </div>
             </div>
+
             {/* ↓ INI BISA DIBIKIN MODEL API ↓ */}
             <Link to={'/dashboard/blog'} className="flex flex-col rounded-3xl border bg-white border-sariblack/14 col-span-4 row-span-1 overflow-clip relative">
                 <img src="/src/assets/images/testimonial-user.png" alt="" className="w-full h-50 object-cover" />
@@ -75,6 +76,9 @@ export default function Blog() {
                     <p className="flex items-center gap-2 rounded-2xl">Selengkapnya <ArrowRight size={18} /></p>
                 </div>
             </Link>
+            <div className="col-span-12 flex justify-center mb-2">
+                <button className="flex items-center gap-2 py-3 px-6 rounded-2xl bg-sarired cursor-pointer hover:bg-white border border-transparent hover:border-sariblack/14 text-white hover:text-sarired"><ArrowDown size={18} /> Muat Lebih Banyak</button>
+            </div>
         </div>
     );
 }
