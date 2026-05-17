@@ -3,7 +3,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDbMXAtkjQi6kzyfonEwo1MKH6XCMKjbuI",
-  authDomain: "sanubari-techsprint.firebaseapp.com",
+  authDomain: "://firebaseapp.com",
   projectId: "sanubari-techsprint",
   storageBucket: "sanubari-techsprint.firebasestorage.app",
   messagingSenderId: "165240553784",
