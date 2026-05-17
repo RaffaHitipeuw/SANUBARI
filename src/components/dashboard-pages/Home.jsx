@@ -167,7 +167,7 @@ export default function Home() {
                     <h1 className="text-xl font-mr font-semibold">5 Tips Jantung Sehat di Usia 30-an</h1>
                     <h2 className="text-sm text-sarigray line-clamp-3">Pagi hari saat perut kosong atau sore hari setelah beraktivitas? Temukan jawabannya…</h2>
                 </div>
-                <p className="flex items-center max-sm:w-full max-sm:justify-center gap-2 rounded-2xl py-4">
+                <p className="flex items-center max-sm:w-full max-sm:justify-center gap-2 rounded-2xl p-6 max-sm:p-4">
                     Selengkapnya <ArrowRight size={18} />
                 </p>
             </NavLink>
