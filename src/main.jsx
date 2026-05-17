@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './styles/index.css'
 import Hero from './components/sections/Hero.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
+import SmoothScroll from './components/providers/SmoothScroll'
 import Layout from './components/layout/Layout.jsx'
 import LandingPage from './pages/LandingPage.jsx'
 import LoginPage from "./pages/LoginPage";
@@ -15,6 +16,7 @@ import ChatbotPage from './components/dashboard-pages/Chatbot.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <SmoothScroll>
     <BrowserRouter>
       <Routes>
         <Route element={<Layout/>}>
@@ -30,5 +32,6 @@ createRoot(document.getElementById('root')).render(
         </Route>
       </Routes>
     </BrowserRouter>
+   </SmoothScroll>
   </StrictMode>,
 )

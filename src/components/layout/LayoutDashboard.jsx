@@ -48,7 +48,7 @@ export default function LayoutDashboard() {
   }, []);
 
   return (
-    <div className='flex max-sm:flex-col gap-4 h-screen overflow-hidden bg-sariwhite relative'>
+    <div className='flex max-sm:flex-col gap-4 min-h-screen bg-sariwhite relative'>
       <div className="hidden max-sm:absolute max-sm:w-full z-49 p-4 max-sm:flex flex-col gap-2 items-end">
         <button className='dsh-cards border-sariblack/14 cursor-pointer bg-white' onClick={() => setExtraMenu(!extraMenu)}>
           <Ellipsis className={`size-6 ${extraMenu ? 'hidden' : 'block'}`}/>
