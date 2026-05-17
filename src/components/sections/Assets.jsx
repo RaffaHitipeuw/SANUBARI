@@ -3,11 +3,11 @@ import '../../styles/index.css'
 
 export function MedicalAiAst({className}){
     return(
-        <svg className={className || ""} viewBox="0 0 168 243" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="182.288" cy="63.4598" r="60.0631" transform="rotate(90 182.288 63.4598)" stroke="#C8B9A2" strokeWidth="6.9038"/>
-            <circle cx="182.288" cy="63.4603" r="97.5024" transform="rotate(90 182.288 63.4603)" stroke="#C8B9A2" strokeWidth="11.2072"/>
-            <circle cx="182.062" cy="63.2333" r="129.807" transform="rotate(90 182.062 63.2333)" stroke="#C8B9A2" strokeWidth="14.9204"/>
-            <circle cx="179.46" cy="63.46" r="169.707" transform="rotate(90 179.46 63.46)" stroke="#C8B9A2" strokeWidth="19.5065"/>
+        <svg className={className || ""} viewBox="0 0 359 359" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="182.288" cy="179.46" r="60.0631" transform="rotate(90 182.288 179.46)" stroke="#C8B9A2" strokeWidth="6.9038"/>
+            <circle cx="182.288" cy="179.46" r="97.5024" transform="rotate(90 182.288 179.46)" stroke="#C8B9A2" strokeWidth="11.2072"/>
+            <circle cx="182.062" cy="179.233" r="129.807" transform="rotate(90 182.062 179.233)" stroke="#C8B9A2" strokeWidth="14.9204"/>
+            <circle cx="179.46" cy="179.46" r="169.707" transform="rotate(90 179.46 179.46)" stroke="#C8B9A2" strokeWidth="19.5065"/>
         </svg>
     )
 }
