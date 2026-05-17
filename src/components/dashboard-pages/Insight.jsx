@@ -136,7 +136,7 @@ export default function InsightPage() {
 
             {/* ARTIKEL CARD */}
             <Link to={'/dashboard/blog'} className="h-[52vh] max-sm:h-max flex flex-col rounded-3xl max-sm:rounded-2xl border bg-white border-sariblack/14 col-span-4 max-sm:col-span-1 row-span-1 overflow-clip relative">
-                <img src="/src/assets/images/testimonial-user.png" alt="" className="w-full h-50 object-cover" />
+                <img src="/assets/images/testimonial-user.png" alt="" className="w-full h-50 object-cover" />
                 <span className="absolute top-4 left-4 bg-sariwhite border border-sariblack/14 text-sariblack font-bold tracking-wider px-3 py-1 rounded-lg text-sm max-sm:text-xs uppercase">REKOMENDASI ARTIKEL</span>
                 <div className="flex flex-col gap-2 p-6 max-sm:p-4 h-full">
                     <h1 className="text-2xl max-sm:text-xl font-mr font-semibold">5 Tips Jantung Sehat di Usia 30-an</h1>

@@ -8,19 +8,19 @@ export default function Testimonial() {
             name: "Sam Nook",
             role: "Mahasiswa",
             text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi explicabo quo saepe vel. Iure.",
-            image: "/src/assets/images/testimonial-user.png"
+            image: "/assets/images/testimonial-user.png"
         },
         {
             name: "Ahmad Fauzi",
             role: "Dokter",
             text: "Fitur AI dan monitoring BPM real-time sangat membantu saya memahami kesehatan tubuh.",
-            image: "/src/assets/images/testimonial-user2.png"
+            image: "/assets/images/testimonial-user2.png"
         },
         {
             name: "Raindra Yunira",
             role: "Frontend Developer",
             text: "SANUBARI membantu saya memahami kondisi jantung dengan UI yang modern dan pengalaman yang nyaman.",
-            image: "/src/assets/images/testimonial-user3.png"
+            image: "/assets/images/testimonial-user3.png"
         },
     ];
 
