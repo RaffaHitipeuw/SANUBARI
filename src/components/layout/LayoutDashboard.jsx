@@ -104,7 +104,7 @@ export default function LayoutDashboard() {
           setOpen(false);
           setInfoOpen(false);
         }}>
-          <nav className="relative bg-white overflow-clip border border-sariblack/14 h-full max-sm:h-max max-sm:w-full rounded-2xl flex flex-col max-sm:flex-row items-stretch justify-between">
+          <nav className="relative bg-white overflow-hidden border border-sariblack/14 h-full max-sm:h-max max-sm:w-full rounded-2xl flex flex-col max-sm:flex-row items-stretch">
             <NavLink to={'/profile'} className='flex items-center p-4 max-sm:hidden'>
               <span className='block w-12 h-12 p-2 border border-sariblack/14 rounded-full bg-white'>
                 <Logo className={'text-sarired'} />
@@ -113,10 +113,7 @@ export default function LayoutDashboard() {
                 {userName}
               </h2>
             </NavLink>
-            <ul
-              className='flex flex-col max-sm:flex-row h-full gap-2 max-sm:gap-1 p-4 max-sm:p-2 max-sm:justify-between max-sm:w-full max-sm:overflow-auto max-sm:h-16'
-              style={{ scrollbarWidth: 'none' }}
-            >
+            <ul className={` flex flex-col max-sm:flex-row gap-2 max-sm:gap-1 p-4 max-sm:p-2 max-sm:justify-between max-sm:w-full overflow-y-auto max-sm:overflow-auto transition-all duration-500 max-sm:h-16 ${infoOpen ? 'h-[32vh]' : 'h-full'}`} style={{ scrollbarWidth: 'none' }} >
               {navItems.map((item, index) => (
                 <li key={index}>
                   <NavLink to={item.path} className='border border-transparent hover:border-sarired hover:bg-sarired/14 rounded-2xl max-sm:rounded-xl hover:text-sarired transition duration-75 flex items-center max-sm:justify-center px-4 max-sm:p-0 h-14 max-sm:h-full max-sm:w-auto text-base max-sm:aspect-square max-sm:size-14'>
