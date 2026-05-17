@@ -161,7 +161,7 @@ export default function Home() {
             </div>
 
             <NavLink to={'/dashboard/blog'} className="flex flex-col rounded-3xl max-sm:rounded-2xl border bg-white border-sariblack/14 col-span-4 max-sm:col-span-1 row-span-1 overflow-clip relative">
-                <img src="/src/assets/images/testimonial-user.png" alt="" className="w-full h-40 object-cover" />
+                <img src="/src/assets/images/5tips.png" alt="" className="w-full h-40 object-cover" />
                 <span className="absolute top-4 left-4 bg-sariredlight text-sarired font-bold px-3 py-1 rounded-lg text-sm uppercase">Artikel Baru</span>
                 <div className="flex flex-col gap-2 p-6 max-sm:p-4">
                     <h1 className="text-xl font-mr font-semibold">5 Tips Jantung Sehat di Usia 30-an</h1>
