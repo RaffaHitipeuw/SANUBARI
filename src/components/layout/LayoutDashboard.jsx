@@ -68,63 +68,56 @@ export default function LayoutDashboard() {
   }, []);
 
   return (
-    <div className='flex max-sm:flex-col gap-4 min-h-screen overflow-hidden bg-sariwhite relative'>
-      <div className="hidden max-sm:absolute max-sm:w-full z-49 p-4 max-sm:flex flex-col gap-2 items-end">
-        <button className='dsh-cards border-sariblack/14 cursor-pointer bg-white' onClick={() => setExtraMenu(!extraMenu)}>
-          <Ellipsis className={`size-6 ${extraMenu ? 'hidden' : 'block'}`}/>
-          <X className={`size-6 ${extraMenu ? 'block' : 'hidden'}`}/>
-        </button>
-        <div className={`${extraMenu ? 'flex' : 'hidden'} flex-col p-2 items-end w-[60vw] bg-white border border-sariblack/14 rounded-2xl overflow-hidden`}>
-          <ul className={`${extraMenu ? 'max-sm:flex' : 'max-sm:hidden'} flex-col hidden w-full`}>
-            <li onClick={() => setInfoOpen(!infoOpen)} className={`${infoOpen ? 'h-max flex-col py-4 items-stretch gap-2' : 'w-full items-center'} text-left flex h-14 px-6 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer`}>
-              {infoOpen == false && (
-                <>
-                  <Info size={18} />
-                  <span className={`ml-2 whitespace-nowrap transition-all duration-500`}>
-                    About
-                  </span>
-                </>
-              )}
-              {infoOpen && (
-                <>
-                  <p className='text-xl font-mr font-semibold'>SANUBARI</p>
-                  <p>
-                    © 2026 SANUBARI. Medical Disclaimer:
-                    For informational purposes only.
-                    Selalu konsultasikan kondisi kesehatan Anda
-                    dengan tenaga medis profesional.
-                  </p>
-                </>
-              )}
-            </li>
-            <li>
-              <button onClick={() => setSupportOpen(true)} className='flex items-center h-14 px-6 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer'>
-                <CircleQuestionMark size={18} />
-                <span className={`ml-2 whitespace-nowrap transition-all duration-500`}>
-                  Support
-                </span>
-              </button>
-            </li>
-            <li>
-              <NavLink
-                className='bg-sarired/14 text-sarired flex items-center h-14 px-6 text-base rounded-xl'
-              >
-                <LogOut size={18} />
-                <span className={`ml-2 whitespace-nowrap transition-all duration-500`}>
-                  Log Out
-                </span>
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+    <div className='flex max-sm:flex-col gap-4 min-h-screen bg-sariwhite relative'>
+    <div className="hidden max-sm:absolute max-sm:w-full z-49 p-4 max-sm:flex flex-col gap-2 items-end">
+      <button className='dsh-cards border-sariblack/14 cursor-pointer bg-white' onClick={() => setExtraMenu(!extraMenu)}>
+        <Ellipsis className={`size-6 ${extraMenu ? 'hidden' : 'block'}`}/>
+        <X className={`size-6 ${extraMenu ? 'block' : 'hidden'}`}/>
+      </button>
+
+      <div className={`${extraMenu ? 'flex' : 'hidden'} flex-col p-2 items-end w-[60vw] bg-white border border-sariblack/14 rounded-2xl overflow-hidden`}>
+        <ul className={`${extraMenu ? 'max-sm:flex' : 'max-sm:hidden'} flex-col hidden w-full`}>
+          <li onClick={() => setInfoOpen(!infoOpen)} className={`${infoOpen ? 'h-max flex-col py-4 items-stretch gap-2' : 'w-full items-center'} text-left flex h-14 px-6 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer`}>
+            {infoOpen == false && (
+              <>
+                <Info size={18} />
+                <span className='ml-2 whitespace-nowrap transition-all duration-500'>About</span>
+              </>
+            )}
+            {infoOpen && (
+              <>
+                <p className='text-xl font-mr font-semibold'>SANUBARI</p>
+                <p>
+                  © 2026 SANUBARI. Medical Disclaimer:
+                  For informational purposes only.
+                  Selalu konsultasikan kondisi kesehatan Anda
+                  dengan tenaga medis profesional.
+                </p>
+              </>
+            )}
+          </li>
+          <li>
+
+            <button onClick={() => setSupportOpen(true)} className='flex items-center h-14 px-6 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer'>
+              <CircleQuestionMark size={18} />
+              <span className='ml-2 whitespace-nowrap transition-all duration-500'>Support</span>
+            </button>
+          </li>
+          <li>
+            <NavLink
+              className='bg-sarired/14 text-sarired flex items-center h-14 px-6 text-base rounded-xl'
+            >
+              <LogOut size={18} />
+              <span className='ml-2 whitespace-nowrap transition-all duration-500'>Log Out</span>
+            </NavLink>
+          </li>
+        </ul>
       </div>
+    </div>
 
       <div className="pr-0 max-sm:pr-4 p-4 h-full max-sm:h-max max-sm:w-full max-sm:absolute max-sm:bottom-0 max-sm:z-999">
-        <header className={`${open ? 'w-[20vw] max-sm:w-full' : 'w-max max-sm:w-full'} flex flex-col max-sm:flex-row gap-4 justify-between h-full transition-[width] duration-1000 ease-[cubic-bezier(0.3,1,0.2,1)]`} onMouseEnter={() => setOpen(true)} onMouseLeave={() => {
-          setOpen(false);
-          setInfoOpen(false);
-        }}>
-          <nav className="relative bg-white overflow-clip border border-sariblack/14 h-full max-sm:h-max max-sm:w-full rounded-2xl flex flex-col max-sm:flex-row items-stretch justify-between">
+      <header className={`${open ? 'w-[20vw] max-sm:w-full' : 'w-max max-sm:w-full'} flex flex-col max-sm:flex-row gap-4 justify-between h-full transition-[width] duration-1000 ease-[cubic-bezier(0.3,1,0.2,1)]`} onMouseEnter={() => setOpen(true)} onMouseLeave={() => { setOpen(false); setInfoOpen(false); }}>
+          <nav className="relative bg-white overflow-hidden border border-sariblack/14 h-full max-sm:h-max max-sm:w-full rounded-2xl flex flex-col max-sm:flex-row items-stretch">
             <NavLink to={'/profile'} className='flex items-center p-4 max-sm:hidden'>
               <span className='block w-12 h-12 p-2 border border-sariblack/14 rounded-full bg-white'>
                 <Logo className={'text-sarired'} />
@@ -133,10 +126,8 @@ export default function LayoutDashboard() {
                 {userName}
               </h2>
             </NavLink>
-            <ul
-              className='flex flex-col max-sm:flex-row h-full gap-2 max-sm:gap-1 p-4 max-sm:p-2 max-sm:justify-between max-sm:w-full max-sm:overflow-auto max-sm:h-16'
-              style={{ scrollbarWidth: 'none' }}
-            >
+
+            <ul className={` flex flex-col max-sm:flex-row gap-2 max-sm:gap-1 p-4 max-sm:p-2 pb-32 max-sm:justify-between max-sm:w-full overflow-y-auto max-sm:overflow-auto transition-all duration-500 max-sm:h-16 ${infoOpen ? 'h-[32vh]' : 'h-full'} `}style={{ scrollbarWidth: 'none' }}>
               {navItems.map((item, index) => (
                 <li key={index}>
                   <NavLink to={item.path} className='border border-transparent hover:border-sarired hover:bg-sarired/14 rounded-2xl max-sm:rounded-xl hover:text-sarired transition duration-75 flex items-center max-sm:justify-center px-4 max-sm:p-0 h-14 max-sm:h-full max-sm:w-auto text-base max-sm:aspect-square max-sm:size-14'>

@@ -13,7 +13,6 @@ import CameraPage from './components/dashboard-pages/Camera.jsx'
 import InsightPage from './components/dashboard-pages/Insight.jsx'
 import Blog from './components/dashboard-pages/Blog.jsx'
 import ChatbotPage from './components/dashboard-pages/Chatbot.jsx'
-import SignupPage from './pages/SignupPage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -22,15 +21,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<Layout/>}>
           <Route element={<LandingPage/>} index/>
-        </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route element={<LayoutDashboard/>} path='/dashboard'>
-          <Route index element={<Home/>}/>
-          <Route path='/dashboard/camera' element={<CameraPage/>}/>
-          <Route path='/dashboard/insights' element={<InsightPage/>}/>
-          <Route path='/dashboard/blog' element={<Blog/>}/>
-          <Route path='/dashboard/chatbot' element={<ChatbotPage/>}/>
+          <Route path="/login" element={<LoginPage />} />
         </Route>
         <Route element={<LayoutDashboard/>} path='/dashboard'>
           <Route index element={<Home/>}/>

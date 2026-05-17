@@ -72,9 +72,9 @@ export default function InsightPage() {
                         </h1>
                         <p className="text-sarigray text-base max-sm:text-sm">
                             Rata-rata mingguan (30 hari terakhir)
-                        </p>
+                        
+                            </p>
                     </div>
-
                     <div className="bg-sariblue/14 rounded-2xl max-sm:w-full p-2 flex items-center">
                         <button className="cursor-pointer max-sm:w-full px-4 py-2 rounded-xl bg-sariblue text-white text-sm font-semibold">
                             30 Hari
