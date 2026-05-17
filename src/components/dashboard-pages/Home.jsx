@@ -161,13 +161,13 @@ export default function Home() {
             </div>
 
             <NavLink to={'/dashboard/blog'} className="flex flex-col rounded-3xl max-sm:rounded-2xl border bg-white border-sariblack/14 col-span-4 max-sm:col-span-1 row-span-1 overflow-clip relative">
-                <img src="/src/assets/images/testimonial-user.png" alt="" className="w-full h-40 object-cover" />
+                <img src="/src/assets/images/5tips.png" alt="" className="w-full h-40 object-cover" />
                 <span className="absolute top-4 left-4 bg-sariredlight text-sarired font-bold px-3 py-1 rounded-lg text-sm uppercase">Artikel Baru</span>
                 <div className="flex flex-col gap-2 p-6 max-sm:p-4">
                     <h1 className="text-xl font-mr font-semibold">5 Tips Jantung Sehat di Usia 30-an</h1>
                     <h2 className="text-sm text-sarigray line-clamp-3">Pagi hari saat perut kosong atau sore hari setelah beraktivitas? Temukan jawabannya…</h2>
                 </div>
-                <p className="flex items-center max-sm:w-full max-sm:justify-center gap-2 rounded-2xl p-6 max-sm:p-4">
+                <p className="flex items-center max-sm:w-full max-sm:justify-center gap-2 rounded-2xl py-4">
                     Selengkapnya <ArrowRight size={18} />
                 </p>
             </NavLink>
