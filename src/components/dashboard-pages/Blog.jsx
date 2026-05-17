@@ -12,7 +12,7 @@ export default function Blog() {
             title: "Rahasia Diet Mediterania: Mengapa Jantung Anda Sangat Menyukainya",
             description: "Penelitian terbaru mengonfirmasi bahwa pola makan ala Mediterania mampu menurunkan risiko penyakit jantung...",
             category: "Nutrisi & Diet",
-            image: "/assets/images/rahasiadiet.png",
+            image: "/src/assets/images/rahasiadiet.png",
             author: "Dr. Tirta Kencana",
             readTime: "5 Menit Baca",
             featured: true
@@ -22,7 +22,7 @@ export default function Blog() {
             title: "Yoga untuk Kontrol Tekanan Darah Tinggi",
             description: "Gerakan yoga yang tepat dikombinasikan dengan teknik pernapasan pranayama terbukti membantu menjaga tekanan darah tetap stabil.",
             category: "Olahraga",
-            image: "/assets/images/yoga.png",
+            image: "/src/assets/images/yoga.png",
             date: "8 Oktober 2026"
         },
 
@@ -30,7 +30,7 @@ export default function Blog() {
             title: "5 Kebiasaan Pagi yang Merusak Jantung",
             description: "Dari langsung memeriksa email hingga melewatkan sarapan, kenali kebiasaan rutin yang diam-diam membebani kesehatan jantung.",
             category: "Gaya Hidup",
-            image: "/assets/images/kerusakan.png",
+            image: "/src/assets/images/kerusakan.png",
             date: "8 Oktober 2026"
         },
 
@@ -38,7 +38,7 @@ export default function Blog() {
             title: "Meditasi 10 Menit untuk Menurunkan Stres",
             description: "Kesehatan mental memiliki pengaruh besar terhadap ritme jantung. Teknik meditasi sederhana ini dapat membantu tubuh lebih rileks.",
             category: "Kesehatan Mental",
-            image: "/assets/images/kardio.png",
+            image: "/src/assets/images/kardio.png",
             date: "8 Oktober 2026"
         },
 
@@ -46,7 +46,7 @@ export default function Blog() {
             title: "Kapan Waktu Terbaik untuk Kardio?",
             description: "Pagi hari saat perut kosong atau sore hari setelah beraktivitas? Temukan waktu terbaik untuk latihan kardio Anda.",
             category: "Olahraga",
-            image: "/assets/images/kardio.png",
+            image: "/src/assets/images/kardio.png",
             date: "8 Oktober 2026"
         }
     ];
@@ -142,7 +142,7 @@ export default function Blog() {
                             </p>
                             <span className="flex gap-4 items-center">
                                 <img
-                                    src="/assets/images/testimonial-user.png"
+                                    src="/src/assets/images/testimonial-user.png"
                                     alt=""
                                     className="w-14 max-sm:w-12"
                                 />

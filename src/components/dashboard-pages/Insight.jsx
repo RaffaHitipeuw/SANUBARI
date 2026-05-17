@@ -72,9 +72,9 @@ export default function InsightPage() {
                         </h1>
                         <p className="text-sarigray text-base max-sm:text-sm">
                             Rata-rata mingguan (30 hari terakhir)
-                        </p>
+                        
+                            </p>
                     </div>
-
                     <div className="bg-sariblue/14 rounded-2xl max-sm:w-full p-2 flex items-center">
                         <button className="cursor-pointer max-sm:w-full px-4 py-2 rounded-xl bg-sariblue text-white text-sm font-semibold">
                             30 Hari
@@ -136,7 +136,7 @@ export default function InsightPage() {
 
             {/* ARTIKEL CARD */}
             <Link to={'/dashboard/blog'} className="h-[52vh] max-sm:h-max flex flex-col rounded-3xl max-sm:rounded-2xl border bg-white border-sariblack/14 col-span-4 max-sm:col-span-1 row-span-1 overflow-clip relative">
-                <img src="/assets/images/testimonial-user.png" alt="" className="w-full h-50 object-cover" />
+                <img src="/src/assets/images/testimonial-user.png" alt="" className="w-full h-50 object-cover" />
                 <span className="absolute top-4 left-4 bg-sariwhite border border-sariblack/14 text-sariblack font-bold tracking-wider px-3 py-1 rounded-lg text-sm max-sm:text-xs uppercase">REKOMENDASI ARTIKEL</span>
                 <div className="flex flex-col gap-2 p-6 max-sm:p-4 h-full">
                     <h1 className="text-2xl max-sm:text-xl font-mr font-semibold">5 Tips Jantung Sehat di Usia 30-an</h1>

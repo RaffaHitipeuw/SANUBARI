@@ -12,13 +12,7 @@ export default function Home() {
     const bpmStateRef = useRef({ current: 72, target: 72, display: 72 });
 
     // Data Dummy untuk Recent Activity
-    const activities = [
-        { date: "Today, 08:45 AM", bpm: "72", status: "NORMAL", note: "Post-morning walk", type: "normal" },
-        { date: "Yesterday, 10:20 PM", bpm: "65", status: "RESTING", note: "Before sleep", type: "resting" },
-        { date: "Yesterday, 04:15 PM", bpm: "115", status: "ELEVATED", note: "Cardio workout", type: "elevated" },
-        { date: "24 Oct, 09:00 AM", bpm: "74", status: "NORMAL", note: "At office desk", type: "normal" },
-        { date: "23 Oct, 11:30 PM", bpm: "62", status: "RESTING", note: "Deep sleep initial", type: "resting" },
-    ];
+    const [activities, setActivities] = useState([]);
 
     const getStatusStyle = (type) => {
         switch (type) {
@@ -34,7 +28,7 @@ export default function Home() {
             if (user) {
                 setUserName(user.displayName);
             }
-        });
+        }); 
     
         const canvas = canvasRef.current;
         const bpmEl = bpmRef.current;
@@ -103,6 +97,34 @@ export default function Home() {
         return () => unsubscribe();
     }, []);
 
+    useEffect(() => {
+        const savedData =
+            JSON.parse(localStorage.getItem("healthHistory")) || [];
+    
+        const formattedData = savedData.map((item) => {
+            let type = "normal";
+            let status = "NORMAL";
+    
+            if (item.bpm < 65) {
+                type = "resting";
+                status = "RESTING";
+            } else if (item.bpm > 100) {
+                type = "elevated";
+                status = "ELEVATED";
+            }
+    
+            return {
+                date: item.date,
+                bpm: item.bpm,
+                status,
+                note: item.note,
+                type,
+            };
+        });
+    
+        setActivities(formattedData);
+    }, []);
+
     return (
         <div className="w-full grid grid-cols-12 max-sm:grid-cols-1 gap-4 mt-2 max-sm:mt-0">
             <div className="col-span-12 max-sm:col-span-1 px-6 max-sm:px-4 py-2 max-sm:py-0 flex flex-col gap-2 max-sm:gap-1">
@@ -125,7 +147,7 @@ export default function Home() {
 
                 <div className="flex max-sm:flex-col items-center max-sm:items-stretch gap-6 flex-1 my-4">
                     <div className="flex items-baseline gap-2 max-sm:order-2">
-                        <div ref={bpmRef} className="text-7xl font-bold text-gray-900 leading-none">72</div>
+                    <div ref={bpmRef} className="text-7xl font-bold text-gray-900 leading-none">{activities[0]?.bpm || 72}</div>
                         <span className="text-gray-400 text-sm font-mr font-semibold mb-2">BPM</span>
                     </div>
                     <div className="flex-1 h-24 max-sm:shrink-0 max-sm:order-1">
@@ -161,7 +183,7 @@ export default function Home() {
             </div>
 
             <NavLink to={'/dashboard/blog'} className="flex flex-col rounded-3xl max-sm:rounded-2xl border bg-white border-sariblack/14 col-span-4 max-sm:col-span-1 row-span-1 overflow-clip relative">
-                <img src="/assets/images/5tips.png" alt="" className="w-full h-40 object-cover" />
+                <img src="/src/assets/images/5tips.png" alt="" className="w-full h-40 object-cover" />
                 <span className="absolute top-4 left-4 bg-sariredlight text-sarired font-bold px-3 py-1 rounded-lg text-sm uppercase">Artikel Baru</span>
                 <div className="flex flex-col gap-2 p-6 max-sm:p-4">
                     <h1 className="text-xl font-mr font-semibold">5 Tips Jantung Sehat di Usia 30-an</h1>
