@@ -11,7 +11,9 @@ import {
   LogOut,
   Info,
   CircleQuestionMark,
-  Paperclip
+  Paperclip,
+  Ellipsis,
+  X
 } from 'lucide-react';
 import { Logo } from '../sections/Assets';
 
@@ -19,6 +21,7 @@ export default function LayoutDashboard() {
   const [userName, setUserName] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
+  const [extraMenu, setExtraMenu] = useState(false)
 
   const location = useLocation();
 
@@ -45,16 +48,62 @@ export default function LayoutDashboard() {
   }, []);
 
   return (
-    <div className='flex max-sm:flex-col gap-4 h-screen overflow-hidden bg-sariwhite'>
+    <div className='flex max-sm:flex-col gap-4 h-screen overflow-hidden bg-sariwhite relative'>
+      <div className="hidden max-sm:absolute max-sm:w-full z-49 p-4 max-sm:flex flex-col gap-2 items-end">
+        <button className='dsh-cards border-sariblack/14 cursor-pointer bg-white' onClick={() => setExtraMenu(!extraMenu)}>
+          <Ellipsis className={`size-6 ${extraMenu ? 'hidden' : 'block'}`}/>
+          <X className={`size-6 ${extraMenu ? 'block' : 'hidden'}`}/>
+        </button>
+        <div className={`${extraMenu ? 'flex' : 'hidden'} flex-col p-2 items-end w-[60vw] bg-white border border-sariblack/14 rounded-2xl overflow-hidden`}>
+          <ul className={`${extraMenu ? 'max-sm:flex' : 'max-sm:hidden'} flex-col hidden w-full`}>
+            <li onClick={() => setInfoOpen(!infoOpen)} className={`${infoOpen ? 'h-max flex-col py-4 items-stretch gap-2' : 'w-full items-center'} text-left flex h-14 px-6 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer`}>
+              {infoOpen == false && (
+                <>
+                  <Info size={18} />
+                  <span className={`ml-2 whitespace-nowrap transition-all duration-500`}>
+                    About
+                  </span>
+                </>
+              )}
+              {infoOpen && (
+                <>
+                  <p className='text-xl font-mr font-semibold'>SANUBARI</p>
+                  <p>
+                    © 2026 SANUBARI. Medical Disclaimer:
+                    For informational purposes only.
+                    Selalu konsultasikan kondisi kesehatan Anda
+                    dengan tenaga medis profesional.
+                  </p>
+                </>
+              )}
+            </li>
+            <li>
+              <button onClick={() => setSupportOpen(true)} className='flex items-center h-14 px-6 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer'>
+                <CircleQuestionMark size={18} />
+                <span className={`ml-2 whitespace-nowrap transition-all duration-500`}>
+                  Support
+                </span>
+              </button>
+            </li>
+            <li>
+              <NavLink
+                className='bg-sarired/14 text-sarired flex items-center h-14 px-6 text-base rounded-xl'
+              >
+                <LogOut size={18} />
+                <span className={`ml-2 whitespace-nowrap transition-all duration-500`}>
+                  Log Out
+                </span>
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div className="pr-0 max-sm:pr-4 p-4 h-full max-sm:h-max max-sm:w-full max-sm:absolute max-sm:bottom-0 max-sm:z-999">
-        <header
-          className={`${open ? 'w-[20vw] max-sm:w-full' : 'w-max max-sm:w-full'} flex flex-col max-sm:flex-row gap-4 justify-between h-full transition-[width] duration-1000 ease-[cubic-bezier(0.3,1,0.2,1)]`}
-          onMouseEnter={() => setOpen(true)}
-          onMouseLeave={() => {
-            setOpen(false);
-            setInfoOpen(false);
-          }}
-        >
+        <header className={`${open ? 'w-[20vw] max-sm:w-full' : 'w-max max-sm:w-full'} flex flex-col max-sm:flex-row gap-4 justify-between h-full transition-[width] duration-1000 ease-[cubic-bezier(0.3,1,0.2,1)]`} onMouseEnter={() => setOpen(true)} onMouseLeave={() => {
+          setOpen(false);
+          setInfoOpen(false);
+        }}>
           <nav className="relative bg-white overflow-clip border border-sariblack/14 h-full max-sm:h-max max-sm:w-full rounded-2xl flex flex-col max-sm:flex-row items-stretch justify-between">
             <NavLink to={'/profile'} className='flex items-center p-4 max-sm:hidden'>
               <span className='block w-12 h-12 p-2 border border-sariblack/14 rounded-full bg-white'>
@@ -127,60 +176,29 @@ export default function LayoutDashboard() {
           </button>
         </header>
       </div>
+
       <main className='w-full max-sm:min-h-full pl-0 max-sm:pl-4 p-4 max-sm:pb-24 overflow-auto'>
         <Outlet />
       </main>
+
       {
         supportOpen && (
-          <div
-            onClick={() => setSupportOpen(false)}
-            className='fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center px-6'
-          >
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className='
-              w-[40vw] max-sm:w-full
-              h-[70vh] max-sm:h-[85vh]
-              bg-white
-              rounded-4xl
-              px-7 py-6
-              max-sm:px-5 max-sm:py-5
-              shadow-2xl
-              flex flex-col
-              overflow-hidden
-              '
-            >
+          <div onClick={() => setSupportOpen(false)} className='fixed inset-0 max-sm:pb-20 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center px-6'>
+            <div onClick={(e) => e.stopPropagation()} className='w-[40vw] max-sm:w-full h-[70vh] max-sm:h-[80vh] bg-white dsh-cards px-7 py-6 max-sm:px-5 max-sm:py-5 shadow-2xl flex flex-col overflow-auto gap-6 max-sm:gap-4 max-h-max' style={{scrollbarWidth: 'none'}}>
               <div className='flex flex-col leading-none shrink-0'>
-                <h1 className='text-[2.3rem] max-sm:text-[1.8rem] font-semibold font-mr text-sariblack'>
-                  Butuh Bantuan?
+                <h1 className='text-4xl max-sm:text-2xl font-semibold font-mr text-sariblack'>
+                  Butuh Bantuan? <br/>
+                  <span className='text-sariblue'>Hubungi Kami!</span>
                 </h1>
-                <h2 className='text-[2.3rem] max-sm:text-[1.8rem] font-semibold font-mr text-[#A8D5CF] mt-1'>
-                  Hubungi Kami!
-                </h2>
               </div>
-              <div className='mt-6 flex flex-col flex-1 min-h-0'>
-                <textarea
-                  placeholder='Pesan/Keluhan/Kritik...'
-                  className='
-                  w-full
-                  flex-1
-                  min-h-0
-                  resize-none
-                  rounded-[1.4rem]
-                  border border-sariblack/10
-                  bg-sariwhite
-                  px-5 py-4
-                  outline-none
-                  text-sm
-                  placeholder:text-sariblack/25
-                  '
-                />
+              <div className='flex flex-col'>
+                <textarea placeholder='Pesan/Keluhan/Kritik...' className='w-full max-sm:h-45 resize-none rounded-3xl max-sm:rounded-xl border border-sariblack/10 bg-sariwhite p-4 outline-none text-sm placeholder:text-sariblack/25'/>
                 <div className='mt-4 flex items-center gap-3 shrink-0'>
-                  <button className='flex items-center h-11 rounded-2xl border border-[#A8D5CF] overflow-hidden hover:shadow-sm transition cursor-pointer group max-sm:w-full'>
-                    <div className='bg-[#A8D5CF] h-full w-12 flex items-center justify-center text-white shrink-0'>
+                  <button className='flex items-center rounded-2xl max-sm:rounded-xl border border-sariblue overflow-hidden transition cursor-pointer group max-sm:w-full'>
+                    <div className='bg-sariblue self-stretch h-12 aspect-square flex items-center justify-center text-white shrink-0'>
                       <Paperclip size={18} />
                     </div>
-                    <div className='px-6 bg-white h-full flex items-center justify-center text-[#A8D5CF] text-sm font-semibold font-int whitespace-nowrap w-full'>
+                    <div className='flex items-center gap-2 py-3 max-sm:py-2 px-6 max-sm:px-4 rounded-2xl max-sm:rounded-lg bg-sariwhite/60 font-semibold text-sariblue max-sm:text-sm z-2'>
                       Lampirkan Screenshot
                     </div>
                   </button>
@@ -189,10 +207,10 @@ export default function LayoutDashboard() {
                   Pesanmu akan terkirim lewat email yang terdaftar dalam SANUBARI.
                 </p>
                 <div className='flex items-center max-sm:flex-col gap-3 mt-5 shrink-0'>
-                  <button className='h-10 px-7 max-sm:w-full rounded-2xl bg-[#A8D5CF] text-white hover:opacity-90 transition cursor-pointer text-sm font-medium'>
+                  <button className='flex items-center justify-center gap-2 py-3 max-sm:py-2 px-6 max-sm:px-4 rounded-2xl max-sm:rounded-lg bg-sariblue font-semibold text-white w-full max-sm:text-sm z-2 cursor-pointer'>
                     Kirim
                   </button>
-                  <button onClick={() => setSupportOpen(false)} className='h-10 px-7 max-sm:w-full rounded-2xl border border-sarired text-sarired hover:bg-sarired/10 transition cursor-pointer text-sm font-medium'>
+                  <button onClick={() => setSupportOpen(false)} className='flex items-center justify-center gap-2 py-3 max-sm:py-2 px-6 max-sm:px-4 rounded-2xl max-sm:rounded-lg bg-sarired/14 font-semibold text-sarired border border-sarired w-full max-sm:text-sm z-2 cursor-pointer'>
                     Batal
                   </button>
                 </div>

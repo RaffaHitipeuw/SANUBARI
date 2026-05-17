@@ -105,7 +105,7 @@ export default function Home() {
 
     return (
         <div className="w-full grid grid-cols-12 max-sm:grid-cols-1 gap-4 mt-2 max-sm:mt-0">
-            <div className="col-span-12 max-sm:col-span-1 px-6 max-sm:px-0 py-2 max-sm:py-0 flex flex-col gap-2 max-sm:gap-1">
+            <div className="col-span-12 max-sm:col-span-1 px-6 max-sm:px-4 py-2 max-sm:py-0 flex flex-col gap-2 max-sm:gap-1">
                 <h1 className="text-4xl max-sm:text-2xl font-semibold font-mr text-sariblack">Halo, {userName}!</h1>
                 <p className="text-sarigray text-base max-sm:text-sm">Jantung Anda hari ini terlihat sehat.</p>
             </div>
