@@ -118,7 +118,11 @@ export default function CameraPage() {
       inggris: 'Make sure you have enough adjusted lighting to your face.',
     },
     {
-      indo: 'Pilih opsi di atas yang menunjukan diri Anda',
+      indo: (
+        <>
+          Pilih opsi di <span className="hidden max-sm:inline">bawah</span> <span className="max-sm:hidden">atas</span> yang menunjukan diri Anda
+        </>
+      ),
       inggris: 'Pick which one of these that is related to you',
     },
   ]
@@ -170,28 +174,30 @@ export default function CameraPage() {
   return (
     <div className="relative grid grid-cols-12 max-sm:grid-cols-1 grid-rows-3 max-sm:grid-rows-[auto] gap-3 h-full max-sm:h-auto w-full bg-sariwhite">
       {tutorialDone == false && <>
-        <div className="absolute w-full z-6 flex flex-col items-center justify-center gap-12 h-full dsh-cards border-sariblack/14 bg-white">
+        <div className="absolute max-sm:static max-sm:row-span-3 w-full z-6 flex flex-col items-center justify-center gap-12 max-sm:gap-6 h-full p-6 rounded-3xl max-sm:rounded-2xl border border-sariblack/14 bg-white">
           <p>{tutorial}/4</p>
-          {tutorial <= 3 && <TutorialImages tutNumber={tutorial} className={'w-140'}/>}
-          {tutorial == 4 && <div className="grid grid-cols-2 grid-rows-2 gap-6">
+          {tutorial <= 3 && <TutorialImages tutNumber={tutorial} className={'w-140 max-sm:w-full h-auto'}/>}
+          {tutorial == 4 && <div className={`grid grid-cols-2 max-sm:w-full  max-sm:grid-cols-1 grid-rows-2 max-sm:grid-rows-[auto] gap-6 max-sm:order-2`}>
             {optionsContent.map(item => (
-              <button className="cursor-pointer rounded-3xl group col-span-1 flex flex-col items-start p-6 border-3 opacity-50 border-sariblack/14 hover:opacity-100 justify-between w-56 h-42 relative overflow-hidden">
-                <span className="font-mr text-2xl font-semibold">{item.indo}</span>
-                <span className="">{item.inggris}</span>
-                <item.icon className="size-41 absolute -bottom-10 -right-10 -rotate-5"/>
-              </button>))}
-            </div>}
-          <div className="flex flex-col items-center gap-6 w-[55%] text-center">
-            <h1 className="font-mr text-4xl/[130%] font-semibold tracking-tight">{tutorialContent[tutorial - 1].indo}</h1>
-            <h2>{tutorialContent[tutorial - 1].inggris}</h2>
-            <span className="flex gap-2">
-              <button onClick={() => tutorial !== 4 ? setTutorial(tutorial + 1) : setTutorialDone(true)} className={'cursor-pointer flex items-center gap-2 py-3 max-sm:py-2 px-6 max-sm:px-4 rounded-2xl max-sm:rounded-lg bg-sariblue mt-4 font-semibold text-white max-sm:text-sm z-2'}>{tutorial !== 4 ? 'Selanjutnya' : 'Mulai Mengukur'}</button>
-              {tutorial !== 4 && <button onClick={() => setTutorial(4)} className={'cursor-pointer flex items-center gap-2 py-3 max-sm:py-2 px-6 max-sm:px-4 rounded-2xl max-sm:rounded-lg border border-sariblue hover:bg-sariblue mt-4 font-semibold text-sariblue hover:text-white max-sm:text-sm z-2'}>Lewati Tutorial</button>}
-            </span>
+            <button className="cursor-pointer rounded-3xl group col-span-1 flex flex-col items-start p-6 border-3 opacity-50 border-sariblack/14 hover:opacity-100 justify-between w-56 max-sm:w-full h-42 relative overflow-hidden">
+              <span className="font-mr text-2xl font-semibold">{item.indo}</span>
+              <span className="">{item.inggris}</span>
+              <item.icon className="size-41 absolute -bottom-10 -right-10 -rotate-5"/>
+            </button>))}
+          </div>}
+
+          <div className={`flex flex-col items-center gap-6 w-[55%] max-sm:w-full text-center ${tutorialContent !== 4 ? "" : "max-sm:order-1"}`}>
+            <h1 className={`font-mr text-4xl/[130%] max-sm:text-xl font-semibold tracking-tight`}>{tutorialContent[tutorial - 1].indo}</h1>
+            <h2 className="text-base max-sm:text-sm">{tutorialContent[tutorial - 1].inggris}</h2>
           </div>
+          
+          <span className="flex items-center gap-2 max-sm:order-3 mt-4 max-sm:mt-0">
+            {tutorial !== 4 && <button onClick={() => setTutorial(4)} className={'cursor-pointer flex items-center gap-2 py-3 max-sm:py-2 px-6 max-sm:px-4 rounded-2xl max-sm:rounded-lg border border-sariblue hover:bg-sariblue font-semibold text-sariblue hover:text-white max-sm:text-sm z-2'}>Lewati <span className="max-sm:hidden">Tutorial</span></button>}
+            <button onClick={() => tutorial !== 4 ? setTutorial(tutorial + 1) : setTutorialDone(true)} className={'cursor-pointer flex items-center gap-2 py-3 max-sm:py-2 px-6 max-sm:px-4 rounded-2xl max-sm:rounded-lg bg-sariblue font-semibold text-white max-sm:text-sm z-2'}>{tutorial !== 4 ? 'Selanjutnya' : 'Mulai Mengukur'}</button>
+          </span>
         </div>
       </>}
-      <div className="col-span-8 max-sm:col-span-1 row-span-3 max-sm:row-span-1 max-sm:h-[50vh] rounded-3xl overflow-hidden bg-black relative">
+      <div className={`${tutorialDone ? 'max-sm:flex' : 'max-sm:hidden'} col-span-8 max-sm:col-span-1 row-span-3 max-sm:row-span-1 max-sm:h-[50vh] rounded-3xl max-sm:rounded-2xl overflow-hidden bg-black relative`}>
         {cameraError ? (
           <div className="flex flex-col items-center justify-center h-full gap-3 text-white/40">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -214,7 +220,7 @@ export default function CameraPage() {
         <style>{`@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.85)} }`}</style>
       </div>
 
-      <div className="dsh-cards relative col-span-4 max-sm:col-span-1 row-span-2 max-sm:row-span-1 h-full bg-white border border-sariblack/8 flex flex-col gap-6">
+      <div className={`${tutorialDone ? 'max-sm:flex' : 'max-sm:hidden'} dsh-cards relative col-span-4 max-sm:col-span-1 row-span-2 max-sm:row-span-1 h-full bg-white border border-sariblack/8 flex flex-col gap-6 max-sm:h-max`}>
         <div className="flex justify-between items-center max-sm:items-start">
           <div>
             <p className="text-sm max-sm:text-xs tracking-wide text-sariblack/40 uppercase mb-1">
@@ -258,13 +264,13 @@ export default function CameraPage() {
         </div>
       </div>
 
-      <div className="dsh-cards max-sm:h-64 col-span-4 max-sm:col-span-1 row-span-2 max-sm:row-span-1 shrink-0 bg-white border-sariblack/8 flex flex-col gap-2">
+      <div className={`${tutorialDone ? 'max-sm:flex' : 'max-sm:hidden'} dsh-cards max-sm:h-64 col-span-4 max-sm:col-span-1 row-span-2 max-sm:row-span-1 shrink-0 bg-white border-sariblack/8 flex flex-col gap-2`}>
         <h3 className="text-base font-medium text-sariblack font-">Tambahkan Catatan</h3>
         <textarea
           value={note}
           onChange={(e) => setNote(e.target.value)}
           placeholder="Morning po..."
-          className="resize-none border-none h-full outline-none text-base text-sariblack/50 font-int font-medium leading-relaxed bg-transparent"
+          className="resize-none border-none h-full w-full outline-none text-base text-sariblack/50 font-int font-medium leading-relaxed bg-transparent"
         />
         <div className="flex gap-4">
           <button
