@@ -50,46 +50,46 @@ export default function InsightPage() {
 
     }, []);
     return (
-        <div className="w-full grid grid-cols-12 gap-4 mt-2">
+        <div className="w-full grid grid-cols-12 max-sm:grid-cols-1 gap-4 mt-2 max-sm:mt-0">
             {/* HEADING */}
-            <div className="col-span-12 px-6 py-2 flex gap-4 justify-between items-center">
-                <div className="flex flex-col gap-2">
-                    <h1 className="text-4xl font-semibold font-mr text-sariblack">Insight Kesehatan Anda</h1>
-                    <p className="text-sarigray text-base font-int">Pantau perkembangan ritme jantung dan analisis kebugaran harian Anda untuk hidup yang lebih sehat.</p>
+            <div className="col-span-12 max-sm:col-span-1 px-6 max-sm:px-0 py-2 max-sm:py-0 flex max-sm:flex-col gap-4 justify-between items-center">
+                <div className="flex flex-col gap-2 max-sm:gap-1">
+                    <h1 className="text-4xl max-sm:text-2xl font-semibold font-mr text-sariblack">Insight Kesehatan Anda</h1>
+                    <p className="text-sarigray text-base max-sm:text-sm">Pantau perkembangan ritme jantung dan analisis kebugaran harian Anda untuk hidup yang lebih sehat.</p>
                 </div>
-                <span className="block h-full w-px bg-sariblack/14"></span>
-                <button className="flex items-center gap-2 py-3 px-6 rounded-2xl bg-sariwhite border border-sariblack/14 cursor-pointer hover:bg-sariblack/8">
+                <span className="block max-sm:hidden h-full w-px bg-sariblack/14"></span>
+                <button className="flex items-center max-sm:justify-center gap-2 py-3 px-6 rounded-2xl bg-sariwhite border border-sariblack/14 cursor-pointer hover:bg-sariblack/8 max-sm:w-full">
                     <Download size={18}/> Download PDF Laporan
                 </button>
             </div>
 
             {/* CHART SECTION */}
-            <div className="bg-white dsh-cards border border-sariblack/14 col-span-12 h-[80vh] p-8 flex flex-col">
-                <div className="flex items-start justify-between">
-                    <div>
-                        <h1 className="text-[2rem] leading-none font-mr font-semibold text-sariblack">
+            <div className="bg-white dsh-cards border border-sariblack/14 col-span-12 max-sm:col-span-1 h-[80vh] p-8 flex flex-col">
+                <div className="flex max-sm:flex-col items-start justify-between gap-6 max-sm:gap-4">
+                    <div className="flex flex-col gap-2 max-sm:gap-1">
+                        <h1 className="text-4xl max-sm:text-2xl leading-none font-mr font-semibold text-sariblack">
                             Tren Detak Jantung
                         </h1>
-                        <p className="text-sariblack/50 mt-1 font-int">
+                        <p className="text-sarigray text-base max-sm:text-sm">
                             Rata-rata mingguan (30 hari terakhir)
                         </p>
                     </div>
 
-                    <div className="bg-[#F5F5F5] rounded-2xl p-1 flex items-center gap-1">
-                        <button className="px-4 py-2 rounded-xl bg-[#A8D5CF] text-white text-sm font-semibold font-int">
+                    <div className="bg-sariblue/14 rounded-2xl w-full p-2 flex items-center">
+                        <button className="cursor-pointer max-sm:w-full px-4 py-2 rounded-xl bg-sariblue text-white text-sm font-semibold">
                             30 Hari
                         </button>
-                        <button className="px-4 py-2 rounded-xl text-[#A8D5CF] text-sm font-semibold font-int">
+                        <button className="cursor-pointer max-sm:w-full px-4 py-2 rounded-xl text-sariblue text-sm font-semibold">
                             90 Hari
                         </button>
                     </div>
                 </div>
 
-                <div className="flex-1 flex items-center justify-center mt-10">
+                <div className="flex-1 flex items-center justify-center mt-6">
                     <div className="w-full h-full flex flex-col justify-end">
-                        <div className="flex w-full h-[70%]">
+                        <div className="flex w-full h-full">
                             {/* Y-AXIS */}
-                            <div className="w-10 h-full flex flex-col justify-between pb-8 pr-3">
+                            <div className="w-10 h-full flex flex-col justify-between pr-3">
                                 <span className="text-xs text-sariblack/35 font-int">100</span>
                                 <span className="text-xs text-sariblack/35 font-int">80</span>
                                 <span className="text-xs text-sariblack/35 font-int">60</span>
@@ -97,23 +97,23 @@ export default function InsightPage() {
                             </div>
 
                             {/* EMPTY CHART AREA */}
-                            <div className="relative flex-1 border-b border-sariblack/10 flex items-center justify-center pb-16">
+                            <div className="relative flex-1 border-b border-sariblack/10 flex items-center justify-center">
                                 <p className="text-gray-200 font-semibold font-mr tracking-wide">No Recent Activity</p>
                             </div>
                         </div>
 
                         {/* LEGEND */}
-                        <div className="flex items-center gap-8 mt-8">
+                        <div className="flex items-center gap-6 max-sm:gap-4 mt-6 max-sm:mt-4">
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-sariblue" />
-                                <p className="text-sariblack/60 font-int text-sm">
-                                    Resting Heart Rate: -- bpm
+                                <p className="text-sariblack/60 text-xs w-max">
+                                    Resting Heart Rate:<br className="hidden max-sm:inline"/> -- bpm
                                 </p>
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-2 w-full">
                                 <div className="w-3 h-3 rounded-full bg-[#FF5B77]" />
-                                <p className="text-sariblack/60 font-int text-sm">
-                                    Status: --
+                                <p className="text-sariblack/60 text-xs">
+                                    Status: <br className="hidden max-sm:inline"/>--
                                 </p>
                             </div>
                         </div>
@@ -122,29 +122,29 @@ export default function InsightPage() {
             </div>
 
             {/* REKOMENDASI AI SECTION */}
-            <div className="bg-white dsh-cards flex flex-col gap-4 border-sariblack/14 col-span-8">
-                <div className="flex items-center gap-4">
-                    <span className="bg-sarired font-bold tracking-wider text-white uppercase px-4 py-1 rounded-full">Harian</span>
-                    <h1 className="text-2xl font-mr font-semibold">Rekomendasi Aktivitas</h1>
+            <div className="bg-white dsh-cards flex flex-col gap-4 border-sariblack/14 col-span-8 max-sm:col-span-1">
+                <div className="flex max-sm:flex-col items-center max-sm:items-start gap-4">
+                    <span className="bg-sarired font-bold tracking-wider text-white uppercase px-4 py-1 rounded-full text-sm max-sm:text-xs">Harian</span>
+                    <h1 className="text-2xl max-sm:text-xl font-mr font-semibold">Rekomendasi Aktivitas</h1>
                 </div>
-                <p className="text-base text-sarigray">Berdasarkan pemulihan jantung Anda semalam, hari ini adalah waktu yang tepat untuk meningkatkan mobilitas ringan.</p>
-                <div className="h-full w-full bg-sariredlight border-l-8 border-sarired p-6 gap-6 flex text-sarired rounded-r-2xl">
-                    <PersonStanding className="shrink-0" size={48}/>
-                    <p className="font-bold">{recommendation}</p>
+                <p className="text-base max-sm:text-sm text-sarigray">Berdasarkan pemulihan jantung Anda semalam, hari ini adalah waktu yang tepat untuk meningkatkan mobilitas ringan.</p>
+                <div className="h-full w-full bg-sariredlight border-l-8 border-sarired p-6 max-sm:p-4 gap-6 max-sm:gap-4 flex text-sarired rounded-r-2xl max-sm:rounded-r-lg">
+                    <PersonStanding className="shrink-0 size-12 max-sm:size-8"/>
+                    <p className="font-bold text-base max-sm:text-sm">{recommendation}</p>
                 </div>
             </div>
 
             {/* ARTIKEL CARD */}
-            <Link to={'/dashboard/blog'} className="h-[52vh] flex flex-col rounded-3xl border bg-white border-sariblack/14 col-span-4 row-span-1 overflow-clip relative">
+            <Link to={'/dashboard/blog'} className="h-[52vh] max-sm:h-max flex flex-col rounded-3xl max-sm:rounded-2xl border bg-white border-sariblack/14 col-span-4 max-sm:col-span-1 row-span-1 overflow-clip relative">
                 <img src="/src/assets/images/testimonial-user.png" alt="" className="w-full h-50 object-cover" />
-                <span className="absolute top-4 left-4 bg-sariwhite border border-sariblack/14 text-sariblack font-bold tracking-wider px-3 py-1 rounded-lg text-sm uppercase">REKOMENDASI ARTIKEL</span>
-                <div className="flex flex-col gap-2 p-6 h-full">
-                    <h1 className="text-2xl font-mr font-semibold">5 Tips Jantung Sehat di Usia 30-an</h1>
+                <span className="absolute top-4 left-4 bg-sariwhite border border-sariblack/14 text-sariblack font-bold tracking-wider px-3 py-1 rounded-lg text-sm max-sm:text-xs uppercase">REKOMENDASI ARTIKEL</span>
+                <div className="flex flex-col gap-2 p-6 max-sm:p-4 h-full">
+                    <h1 className="text-2xl max-sm:text-xl font-mr font-semibold">5 Tips Jantung Sehat di Usia 30-an</h1>
                     <h2 className="text-sm text-sarigray">Dibaca oleh 2,400+ pengguna hari ini</h2>
                 </div>
-                <div className="flex justify-between p-6">
-                    <p>8 Oktober 2026</p>
-                    <p className="flex items-center gap-2 rounded-2xl">Selengkapnya <ArrowRight size={18} /></p>
+                <div className="flex justify-between items-center p-6 max-sm:p-4">
+                    <p className="text-sm max-sm:text-xs">8 Oktober 2026</p>
+                    <p className="flex items-center gap-2 rounded-2xl text-sm">Selengkapnya <ArrowRight size={18} /></p>
                 </div>
             </Link>
         </div>

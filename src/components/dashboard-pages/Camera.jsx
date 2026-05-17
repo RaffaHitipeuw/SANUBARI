@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 
 function HeartRateChart({ bpmRef }) {
   const canvasRef = useRef(null);
+  const [cameraError, setCameraError] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -122,8 +123,8 @@ export default function CameraPage() {
   };
 
   return (
-    <div className="flex flex-col gap-3 h-full p-1 bg-sariwhite">
-      <div className="flex-1 rounded-2xl overflow-hidden bg-black relative min-h-0">
+    <div className="grid grid-cols-12 max-sm:grid-cols-1 grid-rows-3 max-sm:grid-rows-[auto] gap-3 h-full max-sm:h-auto w-full bg-sariwhite">
+      <div className="col-span-8 max-sm:col-span-1 row-span-3 max-sm:row-span-1 max-sm:h-[50vh] rounded-2xl overflow-hidden bg-black relative">
         {cameraError ? (
           <div className="flex flex-col items-center justify-center h-full gap-3 text-white/40">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -146,77 +147,74 @@ export default function CameraPage() {
 
         <style>{`@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.85)} }`}</style>
       </div>
-
-      <div className="flex gap-3 h-[255px] flex-shrink-0">
-        <div className="w-[1010px] bg-white rounded-2xl px-5 py-3 border border-sariblack/8 flex flex-col justify-between min-w-0">
-          <div className="flex justify-between items-start">
-            <div>
-              <p className="text-base font-int tracking-widest text-sariblack/40 uppercase leading-none mb-1">
-                Measuring BPM...
-              </p>
-              <h3 className="text-xl font-semibold font-mr leading-tight text-sariblack">
-                Heart Rate Activity
-              </h3>
-            </div>
-            <div className="flex items-center gap-1.5 bg-saribluelight/60 rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-sariblue flex-shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-sariblue" />
-              Stable
-            </div>
+      
+      <div className="dsh-cards relative col-span-4 max-sm:col-span-1 row-span-2 max-sm:row-span-1 h-full bg-white border border-sariblack/8 flex flex-col gap-6">
+        <div className="flex justify-between items-center max-sm:items-start">
+          <div>
+            <p className="text-sm max-sm:text-xs tracking-wide text-sariblack/40 uppercase mb-1">
+              Mengukur BPM...
+            </p>
+            <h3 className="text-2xl max-sm:text-xl font-semibold font-mr leading-tight text-sariblack max-sm:mt-2">
+              Aktivitas Detak Jantung
+            </h3>
           </div>
-          
-          <div className="flex items-center gap-3">
-            <div className="flex items-end gap-0.5 flex-shrink-0" style={{ lineHeight: 1 }}>
-              <span ref={bpmRef} className="text-[44px] font-int font-extrabold tracking-tighter text-sariblack" style={{ lineHeight: 1 }}>
-                72
-              </span>
-              <span className="text-[10px] font-mr text-sariblack/40 pb-1">BPM</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <HeartRateChart bpmRef={bpmRef} />
-            </div>
+          <div className="absolute top-4 right-4 flex items-center gap-2 max-sm:gap-1 bg-saribluelight/60 rounded-full px-3 py-1 text-base max-sm:text-xs font-semibold text-sariblue shrink-0">
+            <span className="size-2 max-sm:size-1.5 rounded-full bg-sariblue" />
+            Stable
           </div>
-
-          <div className="flex pt-2 border-t border-sariblack/7">
-            <div className="flex-1 text-left">
-              <p className="text-[9px] text-sariblack/40 font-int uppercase tracking-wide mb-0.5">Average</p>
-              <p className="text-xs font-bold text-sariblack">68 BPM</p>
-            </div>
-            <div className="flex-1 text-center">
-              <p className="text-[9px] text-sariblack/40 font-int uppercase tracking-wide mb-0.5">Peak</p>
-              <p className="text-xs font-bold text-sariblack">112 BPM</p>
-            </div>
-            <div className="flex-1 text-right">
-              <p className="text-[9px] text-sariblack/40 font-int uppercase tracking-wide mb-0.5">Resting</p>
-              <p className="text-xs font-bold text-sariblue">62 BPM</p>
-            </div>
+        </div>
+        
+        <div className="flex flex-col items-start h-full gap-3">
+          <div className="flex flex-col items-center justify-center w-full h-full max-sm:order-2">
+            <HeartRateChart bpmRef={bpmRef} />
+          </div>
+          <div className="flex items-end gap-2 shrink-0 max-sm:order-1">
+            <span ref={bpmRef} className="text-7xl font-extrabold tracking-tighter text-sariblack">
+              72
+            </span>
+            <span className="text-xl font-mr text-sariblack/40">BPM</span>
           </div>
         </div>
 
-        <div className="w-[370px] flex-shrink-0 bg-white rounded-2xl px-4 py-3 border border-sariblack/8 flex flex-col gap-2">
-          <h3 className="text-sm font-medium text-sariblack font-int">Add Note...</h3>
-          <textarea
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            placeholder="Morning po..."
-            className="flex-1 resize-none border-none outline-none text-xs text-sariblack/50 font-int font-medium leading-relaxed bg-transparent"
-          />
-          <div className="flex gap-1.5">
-            <button
-              onClick={handleSave}
-              className="flex-1 py-1.5 rounded-lg text-[11px] font-semibold text-white cursor-pointer transition"
-              style={{ background: saved ? "#3d8b87" : "#5aada8", border: "none" }}
-            >
-              {saved ? "Saved ✓" : "Save Note"}
-            </button>
-            <button
-              onClick={() => setNote("")}
-              className="flex-1 py-1.5 rounded-lg border border-sariblack/12 bg-transparent text-[11px] font-semibold text-sariblack/50 cursor-pointer hover:bg-sariblack/5 transition"
-            >
-              Discard
-            </button>
+        <div className="flex pt-6 border-t border-sariblack/7">
+          <div className="flex-1 text-left">
+            <p className="text-sm text-sariblack/40 font-int uppercase tracking-wide mb-0.5">Average</p>
+            <p className="text-base font-bold text-sariblack">68 BPM</p>
+          </div>
+          <div className="flex-1 text-center">
+            <p className="text-sm text-sariblack/40 font-int uppercase tracking-wide mb-0.5">Peak</p>
+            <p className="text-base font-bold text-sariblack">112 BPM</p>
+          </div>
+          <div className="flex-1 text-right">
+            <p className="text-sm text-sariblack/40 font-int uppercase tracking-wide mb-0.5">Resting</p>
+            <p className="text-base font-bold text-sariblue">62 BPM</p>
           </div>
         </div>
+      </div>
 
+      <div className="dsh-cards max-sm:h-64 col-span-4 max-sm:col-span-1 row-span-2 max-sm:row-span-1 shrink-0 bg-white border-sariblack/8 flex flex-col gap-2">
+        <h3 className="text-base font-medium text-sariblack font-">Tambahkan Catatan</h3>
+        <textarea
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          placeholder="Morning po..."
+          className="resize-none border-none h-full outline-none text-base text-sariblack/50 font-int font-medium leading-relaxed bg-transparent"
+        />
+        <div className="flex gap-4">
+          <button
+            onClick={handleSave}
+            className="flex-1 py-2 px-4 rounded-lg text-sm font-semibold text-white cursor-pointer transition"
+            style={{ background: saved ? "#3d8b87" : "#5aada8", border: "none" }}
+          >
+            {saved ? "Tersimpan ✓" : "Simpan"}
+          </button>
+          <button
+            onClick={() => setNote("")}
+            className="flex-1 py-2 px-4 rounded-lg border border-sariblack/12 bg-transparent text-sm font-semibold text-sariblack/50 cursor-pointer hover:bg-sariblack/5 transition"
+          >
+            Batal
+          </button>
+        </div>
       </div>
     </div>
   );
