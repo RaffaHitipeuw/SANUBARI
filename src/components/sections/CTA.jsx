@@ -18,6 +18,7 @@ export default function CTA() {
                 <h1 className="bottom-[30%] max-sm:bottom-0 max-sm:top-[30%] left-[30%] absolute font-mr tracking-tighter text-8xl max-sm:text-[64px] font-semibold">Mudah,</h1>
                 <h1 className="top-[16%] max-sm:top-[70%] right-[18%] max-sm:right-[30%] absolute font-mr tracking-tighter text-8xl max-sm:text-[64px] font-semibold">Gratis.</h1>
             </span>
+            <Badges type={'maa'} className={'absolute size-180 -z-1 opacity-5 -bottom-80 right-1/2 translate-x-1/2'}/>
         </section>
     )
 }

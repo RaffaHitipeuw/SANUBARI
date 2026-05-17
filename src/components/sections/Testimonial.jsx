@@ -230,6 +230,8 @@ export default function Testimonial() {
                     </button>
                 ))}
             </span>
+            <Badges type={'rtt'} className={'absolute size-150 z-1 opacity-5 top-10 -right-60'}/>
+            <Badges type={'ht'} className={'absolute size-150 z-1 opacity-5 bottom-0 -left-60'}/>
         </section>
     );
 }
