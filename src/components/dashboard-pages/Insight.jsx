@@ -50,10 +50,10 @@ export default function InsightPage() {
 
     }, []);
     return (
-        <div className="w-full grid grid-cols-12 max-sm:grid-cols-1 gap-4 mt-2 max-sm:mt-0">
+        <div className="w-full grid grid-cols-12 max-sm:grid-cols-1 gap-4 mt-2 max-sm:mt-2">
             {/* HEADING */}
             <div className="col-span-12 max-sm:col-span-1 px-6 max-sm:px-0 py-2 max-sm:py-0 flex max-sm:flex-col gap-4 justify-between items-center">
-                <div className="flex flex-col gap-2 max-sm:gap-1">
+                <div className="flex flex-col gap-2 max-sm:gap-1 max-sm:px-4">
                     <h1 className="text-4xl max-sm:text-2xl font-semibold font-mr text-sariblack">Insight Kesehatan Anda</h1>
                     <p className="text-sarigray text-base max-sm:text-sm">Pantau perkembangan ritme jantung dan analisis kebugaran harian Anda untuk hidup yang lebih sehat.</p>
                 </div>
@@ -75,7 +75,7 @@ export default function InsightPage() {
                         </p>
                     </div>
 
-                    <div className="bg-sariblue/14 rounded-2xl w-full p-2 flex items-center">
+                    <div className="bg-sariblue/14 rounded-2xl max-sm:w-full p-2 flex items-center">
                         <button className="cursor-pointer max-sm:w-full px-4 py-2 rounded-xl bg-sariblue text-white text-sm font-semibold">
                             30 Hari
                         </button>
