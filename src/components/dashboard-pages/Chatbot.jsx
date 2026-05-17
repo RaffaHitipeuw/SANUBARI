@@ -56,25 +56,25 @@ export default function ChatbotPage() {
     };
 
     return (
-        <div className="w-full h-full grid grid-cols-12 grid-rows-[auto_1fr_auto] relative overflow-hidden">
-            <div className="col-span-12 relative bg-white px-6 py-4 flex justify-between items-center border rounded-3xl border-sariblack/14">
-                <div className="flex gap-4 items-center">
-                    <img src="/src/assets/images/sari-profile.png" alt="" className="w-14 aspect-square object-cover rounded-full border-3 p-1 border-sariblue" />
+        <div className="w-full h-full grid grid-cols-12 max-sm:grid-cols-1 grid-rows-[auto_1fr_auto]  relative overflow-hidden">
+            <div className="dsh-cards border-sariblack/14 col-span-12 relative bg-white flex justify-between items-center">
+                <div className="flex gap-4 max-sm:gap-3 items-center w-full">
+                    <img src="/src/assets/images/sari-profile.png" alt="" className="w-14 max-sm:w-12 aspect-square object-cover rounded-full border-3 p-1 border-sariblue" />
                     <div>
-                        <h2 className="text-xl font-mr font-semibold">SariAI</h2>
-                        <h3 className="text-sm text-sarigray">Konsultan AI Kesehatan Jantung</h3>
+                        <h2 className="text-xl max-sm:text-lg max-sm:-mt-1 font-mr font-semibold">SariAI</h2>
+                        <h3 className="text-sm max-sm:text-xs text-sarigray">Konsultan AI Kesehatan Jantung</h3>
                     </div>
                 </div>
 
-                <button onClick={() => setInfoChat(!infoChat)} className={`absolute top-4 right-6 flex items-center justify-center rounded-2xl text-sariblack/40 cursor-pointer z-50 p-4 transition-all duration-300 ${infoChat ? "w-66 bg-white dsh-cards flex-col gap-4" : "hover:bg-sariblack/8"}`}>
+                <button onClick={() => setInfoChat(!infoChat)} className={`absolute max-sm:fixed right-6 flex flex-col items-center justify-center rounded-2xl text-sariblack/40 cursor-pointer z-50 p-4 ${infoChat ? "w-66 max-sm:w-63 bg-white dsh-cards flex-col top-6 max-sm:top-1/2 max-sm:-translate-y-1/2 max-sm:right-1/2 max-sm:translate-x-1/2" : "hover:bg-sariblack/8 top-6 max-sm:top-[38%] max-sm:-translate-y-1/2 max-sm:right-4"}`}>
                     <Info size={infoChat ? 56 : 20} className={infoChat ? "text-sarired" : ""}/>
-                    <p className={infoChat ? "block text-sm" : "hidden"}>SariAI adalah generatif AI kami sebagai sarana konsultasi instan.</p>
-                    <p className={infoChat ? "block text-sm" : "hidden"}>SariAI adalah asisten informasi, bukan pengganti diagnosa medis profesional.</p>
-                    <p className={infoChat ? "block text-sm font-bold" : "hidden"}>Dalam keadaan darurat, segera hubungi layanan medis setempat.</p>
+                    <p className={`${infoChat ? "h-max mt-4 max-sm:mt-2" : "w-0 h-0 opacity-0"} whitespace-nowrap block text-sm`}>SariAI adalah generatif AI kami <br/> sebagai sarana konsultasi instan.</p>
+                    <p className={`${infoChat ? "h-max mt-4 max-sm:mt-2" : "w-0 h-0 opacity-0"} whitespace-nowrap block text-sm`}>SariAI adalah asisten informasi, <br/> bukan pengganti diagnosa<br/> medis profesional.</p>
+                    <p className={`${infoChat ? "h-max mt-4 max-sm:mt-2" : "w-0 h-0 opacity-0"} whitespace-nowrap block text-sm font-bold`}>Dalam keadaan darurat, <br/> segera hubungi layanan<br/> medis setempat.</p>
                 </button>
             </div>
 
-            <div className="col-span-12 relative px-6 py-2 flex flex-col overflow-auto">
+            <div className="col-span-12 relative px-6 max-sm:px-0 py-2 flex flex-col overflow-auto">
                 {messages.length === 0 && (
                     <div className="flex flex-col gap-2">
                         <p className="bubble-chat botinput bg-white">
@@ -97,8 +97,8 @@ export default function ChatbotPage() {
                 <div ref={bottomRef} />
             </div>
 
-            <div className="col-span-12 flex flex-col gap-4 px-6">
-                <div className="flex gap-2 overflow-x-auto px-4">
+            <div className="col-span-12 flex flex-col gap-4 px-6 max-sm:px-0 max-sm:h-max">
+                <div className="flex gap-2 overflow-x-auto px-4" style={{scrollbarWidth: "none"}}>
                     <button onClick={() => sendMessage("Apa itu detak jantung normal?")} className="flex items-center gap-2 text-sm bg-white cursor-pointer text-sariblack hover:text-white border border-sariblack/14 hover:bg-sarired px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap">
                         <Heart size={18}/> Apa itu detak jantung normal?
                     </button>
@@ -111,24 +111,23 @@ export default function ChatbotPage() {
                         <BriefcaseMedical size={18}/> Kapan saya harus ke dokter?
                     </button>
                 </div>
-                <div className="flex gap-2 items-center w-full bg-white border border-sariblack/14 rounded-3xl p-2">
+                <div className="flex gap-2 items-center w-full bg-white border border-sariblack/14 rounded-3xl max-sm:rounded-2xl p-2">
                     <button className="p-4 hover:bg-sariblack/8 rounded-2xl"><Paperclip size={18} /></button>
-                    <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") sendMessage(); }} placeholder="Ketik pesan untuk Sahabat Sanubari..." className="outline-0 w-full text-sm" />
+                    <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") sendMessage(); }} placeholder="Ketik pesan untuk Sahabat Sanubari..." className="outline-0 w-full text-sm max-sm:focus-within:h-56" />
                     <button className="p-4 hover:bg-sariblack/8 rounded-2xl"><Mic size={20} /></button>
                     <button onClick={sendMessage} className="p-4 bg-sarired text-white rounded-2xl"><Send size={18} /></button>
                 </div>
-
-                <p className="text-sm/[145%] text-center text-sariblack/40">
+                <p className="text-sm/[145%] max-sm:hidden text-center text-sariblack/40">
                     <b>Sahabat Sanubari adalah asisten informasi, bukan pengganti diagnosa medis profesional.</b><br />Dalam keadaan darurat, segera hubungi layanan medis setempat.
                 </p>
             </div>
 
             <div className={`fixed top-1/2 -translate-y-1/2 right-0 z-50 transition-all duration-500 ease-in-out flex items-center ${showSummary ? "translate-x-0" : "translate-x-80"}`}>
-                <button onClick={() => setShowSummary(!showSummary)} className={`cursor-pointer bg-white border border-gray-200 py-4 pl-2 flex items-center transition-all duration-500 rounded-l-2xl ${showSummary ? "border-r-0 pr-2" : "pr-4 hover:pr-6"}`}>
-                    <ChevronLeft size={24} className={`transition-transform duration-500 ${showSummary ? "rotate-180" : ""}`}/>
-                    <div className={`transition-all duration-500 overflow-hidden relative flex items-center justify-center ${showSummary ? "w-0 opacity-0" : "w-max opacity-100 ml-2"}`}>
-                        <Badges type={'ht'} className={'text-sarired size-18'} />
-                        <Lightbulb className="size-8 absolute text-sariwhite" />
+                <button onClick={() => setShowSummary(!showSummary)} className={`cursor-pointer bg-white border border-gray-200 py-4 max-sm:py-2 pl-2 max-sm:pl-1 flex items-center transition-all duration-500 ${showSummary ? "rounded-l-2xl max-sm:rounded-l-none max-sm:rounded-r-xl max-sm:translate-x-full border-r-0 pr-2" : "rounded-l-2xl max-sm:rounded-l-xl pr-4 hover:pr-6"} max-sm:h-18 relative z-10`}>
+                    <ChevronLeft className={`transition-transform duration-500 size-6 max-sm:size-4.5 ${showSummary ? "rotate-180" : ""}`}/>
+                    <div className={`transition-all duration-500 overflow-hidden relative flex items-center justify-center ${showSummary ? "w-0 opacity-0" : "w-max opacity-100 ml-2"} max-sm:hidden`}>
+                        <Badges type={'ht'} className={'text-sarired size-14 max-sm:size-12'} />
+                        <Lightbulb className="size-6 absolute text-sariwhite" />
                     </div>
                 </button>
 

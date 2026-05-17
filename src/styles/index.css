@@ -153,13 +153,13 @@ main {
     scrollbar-width: none;
 }
 .bubble-chat {
-    @apply text-base/[145%] max-w-[90%] px-6 py-4
+    @apply text-base/[145%] max-sm:text-sm max-w-[90%] px-6 max-sm:px-4 py-4 max-sm:py-3
 }
 .bubble-chat.userinput {
-    @apply bg-sariblue text-white rounded-2xl rounded-tr-none
+    @apply bg-sariblue text-white rounded-2xl max-sm:rounded-xl rounded-tr-none max-sm:rounded-tr-none
 }
 .bubble-chat.botinput {
-    @apply bg-sariwhite text-sariblack border border-sariblack/14 rounded-2xl rounded-tl-none
+    @apply bg-sariwhite text-sariblack border border-sariblack/14 rounded-2xl max-sm:rounded-xl rounded-tl-none max-sm:rounded-tl-none
 }
 
 /* Background Feature */

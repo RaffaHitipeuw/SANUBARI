@@ -127,7 +127,7 @@ export default function LayoutDashboard() {
           </button>
         </header>
       </div>
-      <main className='w-full pl-0 max-sm:pl-4 p-4 max-sm:pb-24 overflow-auto'>
+      <main className='w-full max-sm:min-h-full pl-0 max-sm:pl-4 p-4 max-sm:pb-24 overflow-auto'>
         <Outlet />
       </main>
       {
