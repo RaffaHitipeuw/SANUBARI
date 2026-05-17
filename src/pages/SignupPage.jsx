@@ -3,34 +3,9 @@ import { useNavigate } from "react-router";
 import { auth, provider } from "../../firebase-config.js";
 import { Badges } from "../components/sections/Assets";
 
-export default function LoginPage() {
-
-  const navigate = useNavigate();
-  const handleLogin = async () => {
-    try {
-  
-      const result = await signInWithPopup(auth, provider);
-  
-      console.log("User Info:", result.user);
-      
-      navigate('/dashboard');
-  
-    } catch (error) {
-      if (
-        error.code === "auth/cancelled-popup-request" ||
-        error.code === "auth/popup-closed-by-user"
-      ) {
-        return;
-      }
-    
-      console.error("Login gagal:", error);
-    
-      alert("gagal");
-    }
-  };
-
+export default function SignupPage() {
   return (
-    <div className="w-screen h-screen max-sm:h-max max-sm:py-10 overflow-hidden bg-[#F9F9F5] flex font-sans">
+    <div className="w-screen h-screen max-sm:h-max max-sm:py-10 overflow-hidden bg-[#F9F9F5] flex font-sans max-sm:overflow-auto">
       
       <div className="relative hidden lg:flex w-[64vw] h-full items-center justify-center overflow-hidden border-r border-[#ECEAE6]">
         
@@ -78,7 +53,7 @@ export default function LoginPage() {
         </div>
       </div>
 
-      <div className="w-full lg:w-[40vw] h-full bg-white flex items-center justify-center">
+      <div className="max-sm:w-full w-[40vw] h-full bg-white flex items-center justify-center">
         
         <div className="w-full max-w-106 px-8">
           
@@ -88,14 +63,27 @@ export default function LoginPage() {
             </h2>
 
             <p className="mt-3 text-base text-sariblack/80 font-medium">
-              Masuk ke akun anda untuk melanjutkan.
+              Mari bergabung bersama SANUBARI.
             </p>
           </div>
 
           <form className="mt-12">
-            
             <div>
               <label className="block mb-2 text-xs font-medium text-sariblack/80">
+                Nama Lengkap
+              </label>
+
+              <div className="h-14 bg-sariwhite rounded-2xl px-4 flex items-center border border-transparent focus-within:border-sariblue transition-all">
+                <input
+                  type="email"
+                  placeholder="Muhammad Rafir"
+                  className="w-full bg-transparent outline-none text-sm text-sariblack placeholder:text-sariblack/60"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="mt-6 block mb-2 text-xs font-medium text-sariblack/80">
                 Email
               </label>
 
@@ -143,20 +131,19 @@ export default function LoginPage() {
               </span>
             </div>
 
-            <span className="flex gap-2">
+            <span className="mt-6 flex max-sm:flex-col gap-2 max-sm:items-center">
               
               <button
                 type="submit"
-                className="mt-6 w-full h-14 rounded-2xl bg-sariblue hover:brightness-95 transition-all text-white text-base font-semibold font-mr flex items-center justify-center gap-3 shadow-[0_12px_25px_rgba(145,198,194,0.28)]"
+                className="w-full h-14 rounded-2xl bg-sariblue hover:brightness-95 transition-all text-white text-base font-semibold font-mr flex items-center justify-center gap-3 shadow-[0_12px_25px_rgba(145,198,194,0.28)]"
               >
-                Masuk
+                Buat Akun
                 <span className="text-[22px] leading-none">→</span>
               </button>
 
               <button
                 type="button"
-                onClick={handleLogin}
-                className="mt-6 h-14 px-5 rounded-2xl border-2 border-sariblue flex items-center justify-center hover:bg-sariblue/5 transition-all"
+                className="h-14 max-sm:w-max px-5 rounded-2xl border-2 border-sariblue flex items-center justify-center hover:bg-sariblue/5 transition-all"
               >
                 <Badges type={'google'} className={'w-6 h-auto'} />
               </button>
@@ -165,13 +152,13 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-7 text-center text-xs text-sariblack/80 font-medium">
-            Belum punya akun?{" "}
+            Sudah punya akun?{" "}
             <button className="font-bold text-sariblue">
-              Daftar
+              Login
             </button>
           </div>
 
-          <div className="mt-20 mb-10 text-center">
+          <div className="mt-20 mb-10 max-sm:mb-0 text-center">
             
             <p
               className="text-sariblack/20 text-sm/[104%] tracking-tight font-semibold"
