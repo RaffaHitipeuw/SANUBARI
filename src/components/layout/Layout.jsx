@@ -1,33 +1,13 @@
 import { Link, Outlet } from "react-router";
-import { useEffect } from "react";
-import Lenis from "lenis";
 import { Logo, LogoText } from "../sections/Assets";
 
 export default function Layout() {
-    useEffect(() => {
-        const lenis = new Lenis({
-            duration: 1.2,
-            smoothWheel: true,
-            smoothTouch: true,
-            touchMultiplier: 2,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        requestAnimationFrame(raf);
-
-        return () => {
-            lenis.destroy();
-        };
-    }, []);
     return(
         <>
             <main>
                 <Outlet/>
             </main>
+            
             <footer className="grid grid-cols-12 max-sm:grid-cols-1 px-32 max-sm:px-8 py-12 max-sm:py-8 bg-saribluelight rounded-t-[64px] max-sm:rounded-t-4xl gap-6">
                 <div className="col-span-8 max-sm:col-span-1 flex flex-col gap-4 max-sm:gap-8">
                     <LogoText className={'text-sariblue w-48 h-auto'}/>
