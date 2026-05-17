@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import personImg from "../../assets/icons/person.svg";
+import personImg from "/assets/icons/person.svg";
 
 export default function FaceScanner() {
 

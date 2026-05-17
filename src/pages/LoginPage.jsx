@@ -30,7 +30,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="w-screen h-screen overflow-hidden bg-[#F9F9F5] flex font-sans">
+    <div className="w-screen h-screen max-sm:h-max max-sm:py-10 overflow-hidden bg-[#F9F9F5] flex font-sans">
       
       <div className="relative hidden lg:flex w-[64vw] h-full items-center justify-center overflow-hidden border-r border-[#ECEAE6]">
         
