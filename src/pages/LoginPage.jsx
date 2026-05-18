@@ -1,20 +1,20 @@
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { auth, provider } from "../../firebase-config.js";
 import { Badges } from "../components/sections/Assets";
 
 export default function LoginPage() {
-
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
   const handleLogin = async () => {
     try {
-  
       const result = await signInWithPopup(auth, provider);
-  
       console.log("User Info:", result.user);
-      
       navigate('/dashboard');
-  
     } catch (error) {
       if (
         error.code === "auth/cancelled-popup-request" ||
@@ -22,18 +22,28 @@ export default function LoginPage() {
       ) {
         return;
       }
-    
       console.error("Login gagal:", error);
-    
       alert("gagal");
+    }
+  };
+
+  const handleEmailLogin = async (e) => {
+    e.preventDefault();
+    try {
+      setError(false);
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/dashboard');
+    } catch (error) {
+      console.error(error);
+      setError(true);
+      setEmail("");
+      setPassword("");
     }
   };
 
   return (
     <div className="w-screen h-screen max-sm:h-max max-sm:py-10 overflow-hidden bg-[#F9F9F5] flex font-sans">
-      
       <div className="relative hidden lg:flex w-[64vw] h-full items-center justify-center overflow-hidden border-r border-[#ECEAE6]">
-        
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="400 -550 1431 2000"
@@ -45,7 +55,6 @@ export default function LoginPage() {
         </svg>
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          
           <h1 className="text-[6vw] leading-none font-mr font-black tracking-[-0.06em] text-[#191C1E]">
             SANUBARI
           </h1>
@@ -57,10 +66,8 @@ export default function LoginPage() {
           </p>
 
           <div className="mt-[6.5vh] w-[16vw] min-w-[290px] bg-white rounded-[18px] px-[1.4vw] py-[1.3vw] shadow-[0_18px_40px_rgba(0,0,0,0.08)]">
-            
             <div className="flex items-center gap-[0.55vw]">
               <div className="w-[0.22vw] min-w-[3px] h-[1.2vw] min-h-[18px] rounded-full bg-[#FF7252]" />
-
               <span className="text-[1.15vw] min-text-[16px] font-bold text-sariblack/80">
                 72 BPM
               </span>
@@ -79,29 +86,26 @@ export default function LoginPage() {
       </div>
 
       <div className="w-full lg:w-[40vw] h-full bg-white flex items-center justify-center">
-        
-        <div className="w-full max-w-106 px-8">
-          
+        <div className="w-full max-w-106 px-10">
           <div>
             <h2 className="text-[32px] font-mr font-bold tracking-tighter text-[#232527] leading-none">
               Selamat Datang!
             </h2>
-
             <p className="mt-3 text-base text-sariblack/80 font-medium">
               Masuk ke akun anda untuk melanjutkan.
             </p>
           </div>
 
-          <form className="mt-12">
-            
+          <form onSubmit={handleEmailLogin} className="mt-12">
             <div>
               <label className="block mb-2 text-xs font-medium text-sariblack/80">
                 Email
               </label>
-
-              <div className="h-14 bg-sariwhite rounded-2xl px-4 flex items-center border border-transparent focus-within:border-sariblue transition-all">
+              <div className={`h-14 bg-sariwhite rounded-2xl px-4 flex items-center border transition-all ${error ? "border-red-500" : "border-transparent focus-within:border-sariblue"}`}>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
                   className="w-full bg-transparent outline-none text-sm text-sariblack placeholder:text-sariblack/60"
                 />
@@ -109,42 +113,43 @@ export default function LoginPage() {
             </div>
 
             <div className="mt-6">
-              
               <div className="flex items-center justify-between mb-2">
                 <label className="text-xs font-medium text-sariblack/80">
                   Password
                 </label>
-
-                <button
-                  type="button"
-                  className="text-xs font-semibold text-sariblue"
-                >
+                <button type="button" onClick={() => navigate('/forgotpass')} className="text-xs font-semibold text-sariblue">
                   Lupa Password?
                 </button>
               </div>
 
-              <div className="h-14 bg-sariwhite rounded-2xl px-4 flex items-center border border-transparent focus-within:border-sariblue transition-all">
+              <div className={`h-14 bg-sariwhite rounded-2xl px-4 flex items-center border transition-all ${error ? "border-red-500" : "border-transparent focus-within:border-sariblue"}`}>
                 <input
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   className="w-full bg-transparent outline-none text-[14px] text-sariblack placeholder:text-sariblack/60"
                 />
               </div>
             </div>
 
+            {error && (
+              <p className="mt-4 text-sm text-red-500 font-medium">
+                Email atau password tidak valid
+              </p>
+            )}
+
             <div className="mt-5 flex items-center gap-3">
               <input
                 type="checkbox"
                 className="w-4 h-4 accent-sariblue"
               />
-
               <span className="text-xs text-sariblack/80 font-medium">
                 Remember Me
               </span>
             </div>
 
             <span className="flex gap-2">
-              
               <button
                 type="submit"
                 className="mt-6 w-full h-14 rounded-2xl bg-sariblue hover:brightness-95 transition-all text-white text-base font-semibold font-mr flex items-center justify-center gap-3 shadow-[0_12px_25px_rgba(145,198,194,0.28)]"
@@ -160,22 +165,18 @@ export default function LoginPage() {
               >
                 <Badges type={'google'} className={'w-6 h-auto'} />
               </button>
-
             </span>
           </form>
 
           <div className="mt-7 text-center text-xs text-sariblack/80 font-medium">
             Belum punya akun?{" "}
-            <button className="font-bold text-sariblue">
+            <button type="button" onClick={() => navigate('/signup')} className="font-bold text-sariblue">
               Daftar
             </button>
           </div>
 
           <div className="mt-20 mb-10 text-center">
-            
-            <p
-              className="text-sariblack/20 text-sm/[104%] tracking-tight font-semibold"
-            >
+            <p className="text-sariblack/20 text-sm/[104%] tracking-tight font-semibold">
               © 2026 SANUBARI. Medical Disclaimer: For
               <br />
               informational purposes only.
@@ -188,7 +189,6 @@ export default function LoginPage() {
               >
                 Privacy Policy
               </button>
-
               <button
                 className="text-[#B0B3B5] hover:text-[#191C1E] transition-all font-medium"
                 style={{ fontSize: "13px" }}
