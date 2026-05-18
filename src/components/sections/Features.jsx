@@ -76,10 +76,7 @@ export default function Features(){
                     </div>
                     <HealthTrends className={'absolute -top-10 -right-10 w-50 h-auto text-sarired'}/>
                 </div>
-            </div>
             <div className="absolute inset-0 overflow-hidden -z-1">
-                <div ref={bgRef} className="absolute inset-0 will-change-transform">
-                    <FeatureBg className='absolute top-0 left-0 w-full h-[140%] max-sm:h-[200%] scale-125' />
                     <FeatureBg className='absolute top-[160%] max-sm:top-[180%] left-0 w-full h-[140%] max-sm:h-[200%] scale-125' />
                     <FeatureBg className='absolute top-[320%] max-sm:top-[360%] left-0 w-full h-[140%] max-sm:h-[200%] scale-125' />
                     <FeatureBg className='absolute top-[480%] max-sm:top-[540%] left-0 w-full h-[140%] max-sm:h-[200%] scale-125' />
