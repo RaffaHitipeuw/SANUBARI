@@ -1,14 +1,51 @@
-import { signInWithPopup } from "firebase/auth";
+import { useState } from "react";
+import { createUserWithEmailAndPassword, updateProfile, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { auth, provider } from "../../firebase-config.js";
 import { Badges } from "../components/sections/Assets";
 
 export default function SignupPage() {
+  const navigate = useNavigate();
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await updateProfile(userCredential.user, {
+        displayName: fullName,
+      });
+
+      console.log("Berhasil daftar:", userCredential.user);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(error);
+      alert(error.message);
+    }
+  };
+
+  const handleGoogleSignup = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log(result.user);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(error);
+      alert(error.message);
+    }
+  };
+
   return (
     <div className="w-screen h-screen max-sm:h-max max-sm:py-10 overflow-hidden bg-[#F9F9F5] flex font-sans max-sm:overflow-auto">
-      
       <div className="relative hidden lg:flex w-[64vw] h-full items-center justify-center overflow-hidden border-r border-[#ECEAE6]">
-        
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="400 -550 1431 2000"
@@ -20,7 +57,6 @@ export default function SignupPage() {
         </svg>
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          
           <h1 className="text-[6vw] leading-none font-mr font-black tracking-[-0.06em] text-[#191C1E]">
             SANUBARI
           </h1>
@@ -32,10 +68,8 @@ export default function SignupPage() {
           </p>
 
           <div className="mt-[6.5vh] w-[16vw] min-w-[290px] bg-white rounded-[18px] px-[1.4vw] py-[1.3vw] shadow-[0_18px_40px_rgba(0,0,0,0.08)]">
-            
             <div className="flex items-center gap-[0.55vw]">
               <div className="w-[0.22vw] min-w-[3px] h-[1.2vw] min-h-[18px] rounded-full bg-[#FF7252]" />
-
               <span className="text-[1.15vw] min-text-[16px] font-bold text-sariblack/80">
                 72 BPM
               </span>
@@ -54,67 +88,59 @@ export default function SignupPage() {
       </div>
 
       <div className="max-sm:w-full w-[40vw] h-full bg-white flex items-center justify-center">
-        
         <div className="w-full max-w-106 px-8">
-          
           <div>
             <h2 className="text-[32px] font-mr font-bold tracking-tighter text-[#232527] leading-none">
               Selamat Datang!
             </h2>
-
             <p className="mt-3 text-base text-sariblack/80 font-medium">
               Mari bergabung bersama SANUBARI.
             </p>
           </div>
 
-          <form className="mt-12">
+          <form onSubmit={handleSignup} className="mt-12">
             <div>
               <label className="block mb-2 text-xs font-medium text-sariblack/80">
                 Nama Lengkap
               </label>
-
               <div className="h-14 bg-sariwhite rounded-2xl px-4 flex items-center border border-transparent focus-within:border-sariblue transition-all">
                 <input
-                  type="email"
+                  type="text"
                   placeholder="Muhammad Rafir"
-                  className="w-full bg-transparent outline-none text-sm text-sariblack placeholder:text-sariblack/60"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="mt-6 block mb-2 text-xs font-medium text-sariblack/80">
-                Email
-              </label>
-
-              <div className="h-14 bg-sariwhite rounded-2xl px-4 flex items-center border border-transparent focus-within:border-sariblue transition-all">
-                <input
-                  type="email"
-                  placeholder="name@example.com"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   className="w-full bg-transparent outline-none text-sm text-sariblack placeholder:text-sariblack/60"
                 />
               </div>
             </div>
 
             <div className="mt-6">
-              
+              <label className="block mb-2 text-xs font-medium text-sariblack/80">
+                Email
+              </label>
+              <div className="h-14 bg-sariwhite rounded-2xl px-4 flex items-center border border-transparent focus-within:border-sariblue transition-all">
+                <input
+                  type="email"
+                  placeholder="name@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-transparent outline-none text-sm text-sariblack placeholder:text-sariblack/60"
+                />
+              </div>
+            </div>
+
+            <div className="mt-6">
               <div className="flex items-center justify-between mb-2">
                 <label className="text-xs font-medium text-sariblack/80">
                   Password
                 </label>
-
-                <button
-                  type="button"
-                  className="text-xs font-semibold text-sariblue"
-                >
-                  Lupa Password?
-                </button>
               </div>
-
               <div className="h-14 bg-sariwhite rounded-2xl px-4 flex items-center border border-transparent focus-within:border-sariblue transition-all">
                 <input
                   type="password"
                   placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="w-full bg-transparent outline-none text-[14px] text-sariblack placeholder:text-sariblack/60"
                 />
               </div>
@@ -125,14 +151,12 @@ export default function SignupPage() {
                 type="checkbox"
                 className="w-4 h-4 accent-sariblue"
               />
-
               <span className="text-xs text-sariblack/80 font-medium">
                 Remember Me
               </span>
             </div>
 
             <span className="mt-6 flex max-sm:flex-col gap-2 max-sm:items-center">
-              
               <button
                 type="submit"
                 className="w-full h-14 rounded-2xl bg-sariblue hover:brightness-95 transition-all text-white text-base font-semibold font-mr flex items-center justify-center gap-3 shadow-[0_12px_25px_rgba(145,198,194,0.28)]"
@@ -143,26 +167,27 @@ export default function SignupPage() {
 
               <button
                 type="button"
+                onClick={handleGoogleSignup}
                 className="h-14 max-sm:w-max px-5 rounded-2xl border-2 border-sariblue flex items-center justify-center hover:bg-sariblue/5 transition-all"
               >
                 <Badges type={'google'} className={'w-6 h-auto'} />
               </button>
-
             </span>
           </form>
 
           <div className="mt-7 text-center text-xs text-sariblack/80 font-medium">
             Sudah punya akun?{" "}
-            <button className="font-bold text-sariblue">
+            <button
+              type="button"
+              onClick={() => navigate('/login')}
+              className="font-bold text-sariblue"
+            >
               Login
             </button>
           </div>
 
           <div className="mt-20 mb-10 max-sm:mb-0 text-center">
-            
-            <p
-              className="text-sariblack/20 text-sm/[104%] tracking-tight font-semibold"
-            >
+            <p className="text-sariblack/20 text-sm/[104%] tracking-tight font-semibold">
               © 2026 SANUBARI. Medical Disclaimer: For
               <br />
               informational purposes only.
@@ -175,7 +200,6 @@ export default function SignupPage() {
               >
                 Privacy Policy
               </button>
-
               <button
                 className="text-[#B0B3B5] hover:text-[#191C1E] transition-all font-medium"
                 style={{ fontSize: "13px" }}

@@ -27,7 +27,7 @@ import { useNavigate } from "react-router";
         <div className="flex flex-col items-center justify-center text-center max-sm:text-left gap-6">
           <h1 className="heading-1 text-sariblack">
             Monitor Detak Jantung Anda<br/>
-            <span className="font-bold text-sarired">Secara Instan</span>
+            <span className="font-bold text-sarired">Secara Instan</span> 
           </h1>
           <p className='w-120 max-sm:w-full max-sm:text-sm max-sm:hidden'>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
         </div>
