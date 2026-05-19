@@ -59,7 +59,7 @@ export default function ChatbotPage() {
         <div className="w-full h-full grid grid-cols-12 max-sm:grid-cols-1 grid-rows-[auto_1fr_auto]  relative overflow-hidden">
             <div className="dsh-cards border-sariblack/14 col-span-12 relative bg-white flex justify-between items-center">
                 <div className="flex gap-4 max-sm:gap-3 items-center w-full">
-                    <img src="/src/assets/images/sari-profile.png" alt="" className="w-14 max-sm:w-12 aspect-square object-cover rounded-full border-3 p-1 border-sariblue" />
+                    <img src="/assets/images/sari-profile.png" alt="" className="w-14 max-sm:w-12 aspect-square object-cover rounded-full border-3 p-1 border-sariblue" />
                     <div>
                         <h2 className="text-xl max-sm:text-lg max-sm:-mt-1 font-mr font-semibold">SariAI</h2>
                         <h3 className="text-sm max-sm:text-xs text-sarigray">Konsultan AI Kesehatan Jantung</h3>

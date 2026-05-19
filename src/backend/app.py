@@ -15,9 +15,6 @@ from rppg_vitals import VitalsEngine
 app = Flask(__name__)
 CORS(app)
 
-# =========================================================
-# MEDIAPIPE FACE MESH
-# =========================================================
 
 mp_face_mesh = mp.solutions.face_mesh
 
@@ -29,19 +26,13 @@ face_mesh = mp_face_mesh.FaceMesh(
     min_tracking_confidence=0.5
 )
 
-# =========================================================
-# RPPG ENGINE
-# =========================================================
 
 fusion_engine = MultiROIFusionEngineV2()
 vitals_engine = VitalsEngine()
 
 last_bpm      = 72.0
-last_vitals   = {}      # cache latest vitals so we can always return something
+last_vitals   = {}
 
-# =========================================================
-# PROCESS FRAME
-# =========================================================
 
 @app.route('/process-frame', methods=['POST'])
 def process_frame():
@@ -49,10 +40,6 @@ def process_frame():
     global last_bpm, last_vitals
 
     try:
-
-        # =========================================
-        # DECODE BASE64 IMAGE
-        # =========================================
 
         data       = request.json
         image_data = data["image"].split(",")[1]
@@ -63,9 +50,6 @@ def process_frame():
         if frame is None:
             return jsonify({"success": False, "error": "Failed to decode image"}), 400
 
-        # =========================================
-        # RGB + FACE MESH
-        # =========================================
 
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results   = face_mesh.process(rgb_frame)
@@ -76,7 +60,6 @@ def process_frame():
             face_landmarks = results.multi_face_landmarks[0]
             h, w, _        = frame.shape
 
-            # ── Bounding box ──────────────────────────────────────────────
             xs = [int(lm.x * w) for lm in face_landmarks.landmark]
             ys = [int(lm.y * h) for lm in face_landmarks.landmark]
 
@@ -87,8 +70,6 @@ def process_frame():
                 "h": min(max(ys), h) - max(min(ys), 0),
             }
 
-            # ── rPPG fusion ───────────────────────────────────────────────
-            # Returns a FrameResult object (NOT a plain float)
             frame_result = fusion_engine.update(frame, face_landmarks, h, w)
 
             if frame_result is not None and frame_result.fused_bpm > 0:
@@ -97,8 +78,6 @@ def process_frame():
                 if 30 < bpm < 180:
                     last_bpm = bpm
 
-                # ── Vitals (HRV, respiration, stress) ────────────────────
-                # Only compute when we have enough signal
                 chrom = frame_result.chrom_signal
                 sqi   = float(frame_result.fused_sqi)
 
@@ -112,8 +91,6 @@ def process_frame():
                         "arrhythmia":   bool(vitals.arrhythmia_flag),
                     }
 
-                # ── Send a normalised signal snippet for the waveform ─────
-                # Cap at 80 points so the JSON stays small
                 if len(chrom) > 0:
                     snippet = chrom[-80:] if len(chrom) >= 80 else chrom
                     std     = float(np.std(snippet))
@@ -131,10 +108,6 @@ def process_frame():
         else:
             signal_points = []
 
-        # =========================================
-        # RESPONSE  (no confidence / sqi exposed)
-        # =========================================
-
         return jsonify({
             "success":      True,
             "bpm":          round(last_bpm, 1),
@@ -148,11 +121,6 @@ def process_frame():
 
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
-
-
-# =========================================================
-# CHATBOT
-# =========================================================
 
 conversation_history = []
 
@@ -199,11 +167,6 @@ def chat():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-# =========================================================
-# DAILY RECOMMENDATION
-# =========================================================
-
 @app.route("/daily-recommendation", methods=["GET"])
 def daily_recommendation():
 
@@ -211,7 +174,6 @@ def daily_recommendation():
     recommendation = random.choice(recommendations[status])
 
     return jsonify({"status": status, "recommendation": recommendation})
-
 
 # =========================================================
 # RUN SERVER

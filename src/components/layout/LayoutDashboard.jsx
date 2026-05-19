@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../../firebase-config";
-import { Outlet, NavLink, useLocation } from 'react-router';
-import { Home, Camera, ChartColumnBig, Newspaper, BotMessageSquare, LogOut, Info, CircleQuestionMark, Paperclip, Ellipsis, X} from 'lucide-react';
+import { Outlet, NavLink, useLocation, useNavigate } from 'react-router';
+import { Home, Camera, ChartColumnBig, Newspaper, BotMessageSquare, LogOut, Info, CircleQuestionMark, Paperclip, Ellipsis, X } from 'lucide-react';
 import { Logo } from '../sections/Assets';
 
 export default function LayoutDashboard() {
@@ -45,10 +45,21 @@ export default function LayoutDashboard() {
   };
 
   const location = useLocation();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [menuHover, setMenuHover] = useState(false);
   const [supportOpen, setSupportOpen] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+      alert("Gagal logout");
+    }
+  };
 
   const navItems = [
     { name: 'Home', icon: Home, path: '/dashboard' },
@@ -69,54 +80,51 @@ export default function LayoutDashboard() {
 
   return (
     <div className='flex max-sm:flex-col gap-4 min-h-screen bg-sariwhite relative'>
-    <div className="hidden max-sm:absolute max-sm:w-full z-49 p-4 max-sm:flex flex-col gap-2 items-end">
-      <button className='dsh-cards border-sariblack/14 cursor-pointer bg-white' onClick={() => setExtraMenu(!extraMenu)}>
-        <Ellipsis className={`size-6 ${extraMenu ? 'hidden' : 'block'}`}/>
-        <X className={`size-6 ${extraMenu ? 'block' : 'hidden'}`}/>
-      </button>
+      <div className="hidden max-sm:absolute max-sm:w-full z-49 p-4 max-sm:flex flex-col gap-2 items-end">
+        <button className='dsh-cards border-sariblack/14 cursor-pointer bg-white' onClick={() => setExtraMenu(!extraMenu)}>
+          <Ellipsis className={`size-6 ${extraMenu ? 'hidden' : 'block'}`} />
+          <X className={`size-6 ${extraMenu ? 'block' : 'hidden'}`} />
+        </button>
 
-      <div className={`${extraMenu ? 'flex' : 'hidden'} flex-col p-2 items-end w-[60vw] bg-white border border-sariblack/14 rounded-2xl overflow-hidden`}>
-        <ul className={`${extraMenu ? 'max-sm:flex' : 'max-sm:hidden'} flex-col hidden w-full`}>
-          <li onClick={() => setInfoOpen(!infoOpen)} className={`${infoOpen ? 'h-max flex-col py-4 items-stretch gap-2' : 'w-full items-center'} text-left flex h-14 px-6 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer`}>
-            {infoOpen == false && (
-              <>
-                <Info size={18} />
-                <span className='ml-2 whitespace-nowrap transition-all duration-500'>About</span>
-              </>
-            )}
-            {infoOpen && (
-              <>
-                <p className='text-xl font-mr font-semibold'>SANUBARI</p>
-                <p>
-                  © 2026 SANUBARI. Medical Disclaimer:
-                  For informational purposes only.
-                  Selalu konsultasikan kondisi kesehatan Anda
-                  dengan tenaga medis profesional.
-                </p>
-              </>
-            )}
-          </li>
-          <li>
-
-            <button onClick={() => setSupportOpen(true)} className='flex items-center h-14 px-6 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer'>
-              <CircleQuestionMark size={18} />
-              <span className='ml-2 whitespace-nowrap transition-all duration-500'>Support</span>
-            </button>
-          </li>
-          <li>
-            <NavLink
-              className='bg-sarired/14 text-sarired flex items-center h-14 px-6 text-base rounded-xl'
-            >
-              <LogOut size={18} />
-              <span className='ml-2 whitespace-nowrap transition-all duration-500'>Log Out</span>
-            </NavLink>
-          </li>
-        </ul>
+        <div className={`${extraMenu ? 'flex' : 'hidden'} flex-col p-2 items-end w-[60vw] bg-white border border-sariblack/14 rounded-2xl overflow-hidden`}>
+          <ul className={`${extraMenu ? 'max-sm:flex' : 'max-sm:hidden'} flex-col hidden w-full`}>
+            <li onClick={() => setInfoOpen(!infoOpen)} className={`${infoOpen ? 'h-max flex-col py-4 items-stretch gap-2' : 'w-full items-center'} text-left flex h-14 px-6 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer`}>
+              {infoOpen == false && (
+                <>
+                  <Info size={18} />
+                  <span className='ml-2 whitespace-nowrap transition-all duration-500'>About</span>
+                </>
+              )}
+              {infoOpen && (
+                <>
+                  <p className='text-xl font-mr font-semibold'>SANUBARI</p>
+                  <p>
+                    © 2026 SANUBARI. Medical Disclaimer:
+                    For informational purposes only.
+                    Selalu konsultasikan kondisi kesehatan Anda
+                    dengan tenaga medis profesional.
+                  </p>
+                </>
+              )}
+            </li>
+            <li>
+              <button onClick={() => setSupportOpen(true)} className='flex items-center h-14 px-6 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer'>
+                <CircleQuestionMark size={18} />
+                <span className='ml-2 whitespace-nowrap transition-all duration-500'>Support</span>
+              </button>
+            </li>
+            <li>
+              <NavLink className='bg-sarired/14 text-sarired flex items-center h-14 px-6 text-base rounded-xl'>
+                <LogOut size={18} />
+                <span className='ml-2 whitespace-nowrap transition-all duration-500'>Log Out</span>
+              </NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
 
       <div className="pr-0 max-sm:pr-4 p-4 h-full max-sm:h-max max-sm:w-full max-sm:absolute max-sm:bottom-0 max-sm:z-999">
-      <header className={`${open ? 'w-[20vw] max-sm:w-full' : 'w-max max-sm:w-full'} flex flex-col max-sm:flex-row gap-4 justify-between h-full transition-[width] duration-1000 ease-[cubic-bezier(0.3,1,0.2,1)]`} onMouseEnter={() => setOpen(true)} onMouseLeave={() => { setOpen(false); setInfoOpen(false); }}>
+        <header className={`${open ? 'w-[20vw] max-sm:w-full' : 'w-max max-sm:w-full'} flex flex-col max-sm:flex-row gap-4 justify-between h-full transition-[width] duration-1000 ease-[cubic-bezier(0.3,1,0.2,1)]`} onMouseEnter={() => setOpen(true)} onMouseLeave={() => { setOpen(false); setInfoOpen(false); }}>
           <nav className="relative bg-white overflow-hidden border border-sariblack/14 h-full max-sm:h-max max-sm:w-full rounded-2xl flex flex-col max-sm:flex-row items-stretch">
             <NavLink to={'/profile'} className='flex items-center p-4 max-sm:hidden'>
               <span className='block w-12 h-12 p-2 border border-sariblack/14 rounded-full bg-white'>
@@ -127,7 +135,7 @@ export default function LayoutDashboard() {
               </h2>
             </NavLink>
 
-            <ul className={` flex flex-col max-sm:flex-row gap-2 max-sm:gap-1 p-4 max-sm:p-2 pb-32 max-sm:justify-between max-sm:w-full overflow-y-auto max-sm:overflow-auto transition-all duration-500 max-sm:h-16 ${infoOpen ? 'h-[32vh]' : 'h-full'} `}style={{ scrollbarWidth: 'none' }}>
+            <ul className={`flex flex-col max-sm:flex-row gap-2 max-sm:gap-1 p-4 max-sm:p-2 pb-32 max-sm:justify-between max-sm:w-full overflow-y-auto max-sm:overflow-auto transition-all duration-500 max-sm:h-16 ${infoOpen ? 'h-[32vh]' : 'h-full'}`} style={{ scrollbarWidth: 'none' }}>
               {navItems.map((item, index) => (
                 <li key={index}>
                   <NavLink to={item.path} className='border border-transparent hover:border-sarired hover:bg-sarired/14 rounded-2xl max-sm:rounded-xl hover:text-sarired transition duration-75 flex items-center max-sm:justify-center px-4 max-sm:p-0 h-14 max-sm:h-full max-sm:w-auto text-base max-sm:aspect-square max-sm:size-14'>
@@ -139,18 +147,19 @@ export default function LayoutDashboard() {
                 </li>
               ))}
             </ul>
+
             <ul className='flex flex-col border-t border-sariblack/14 max-sm:hidden'>
               <li>
-              <button onClick={() => setSupportOpen(true)} className='flex items-center h-14 px-8 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer'>
+                <button onClick={() => setSupportOpen(true)} className='flex items-center h-14 px-8 text-base hover:bg-sariblack/8 transition duration-75 w-full cursor-pointer'>
                   <CircleQuestionMark size={18} />
                   <span className={`${open ? 'ml-2 w-5' : 'w-0 opacity-0'} whitespace-nowrap transition-all duration-500`}>Support</span>
                 </button>
               </li>
               <li>
-                <NavLink className='bg-sarired/14 text-sarired flex items-center h-14 px-8 text-base'>
+                <button onClick={handleLogout} className='bg-sarired/14 text-sarired flex items-center h-14 px-8 text-base w-full cursor-pointer'>
                   <LogOut size={18} />
                   <span className={`${open ? 'ml-2 w-5' : 'w-0 opacity-0'} whitespace-nowrap transition-all duration-500`}>Log Out</span>
-                </NavLink>
+                </button>
               </li>
             </ul>
           </nav>
@@ -160,7 +169,6 @@ export default function LayoutDashboard() {
             {open && infoOpen && (
               <>
                 <p>SANUBARI</p>
-
                 <p>
                   © 2026 SANUBARI. Medical Disclaimer:
                   For informational purposes only.
@@ -172,16 +180,17 @@ export default function LayoutDashboard() {
           </button>
         </header>
       </div>
+
       <main className='w-full max-sm:min-h-full pl-0 max-sm:pl-4 p-4 max-sm:pb-24 overflow-auto'>
         <Outlet />
       </main>
-      
+
       {supportOpen && (
         <div onClick={() => setSupportOpen(false)} className='fixed inset-0 max-sm:pb-20 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center px-6'>
-          <div onClick={(e) => e.stopPropagation()} className='w-[40vw] max-sm:w-full h-[73vh] max-sm:h-[80vh] bg-white dsh-cards px-7 py-6 max-sm:px-5 max-sm:py-5 shadow-2xl flex flex-col overflow-auto gap-6 max-sm:gap-4 max-h-max' style={{scrollbarWidth: 'none'}}>
+          <div onClick={(e) => e.stopPropagation()} className='w-[40vw] max-sm:w-full h-[73vh] max-sm:h-[80vh] bg-white dsh-cards px-7 py-6 max-sm:px-5 max-sm:py-5 shadow-2xl flex flex-col overflow-auto gap-6 max-sm:gap-4 max-h-max' style={{ scrollbarWidth: 'none' }}>
             <div className='flex flex-col leading-none shrink-0'>
               <h1 className='text-4xl max-sm:text-2xl font-semibold font-mr text-sariblack'>
-                Butuh Bantuan? <br/>
+                Butuh Bantuan? <br />
                 <span className='text-sariblue'>Hubungi Kami!</span>
               </h1>
             </div>
@@ -222,5 +231,5 @@ export default function LayoutDashboard() {
         </div>
       )}
     </div>
-  );  
+  );
 }

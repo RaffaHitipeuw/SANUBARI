@@ -10,20 +10,26 @@ import { useNavigate } from "react-router";
   `;
 
   export default function Hero() {
-
     const navigate = useNavigate();
+    const scrollToFeatures = () => {
+      const section = document.getElementById('features');
+    
+      if (section) {
+        section.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    };
 
     return (
       <section className="relative min-h-screen flex flex-col items-center max-sm:items-start justify-center max-sm:justify-between overflow-hidden max-sm:p-6">
         <div className="flex flex-col items-center justify-center text-center max-sm:text-left gap-6">
           <h1 className="heading-1 text-sariblack">
             Monitor Detak Jantung Anda<br/>
-            <span className="font-bold text-sarired">Secara Instan</span>
+            <span className="font-bold text-sarired">Secara Instan</span> 
           </h1>
           <p className='w-120 max-sm:w-full max-sm:text-sm max-sm:hidden'>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
-
-
-
         </div>
 
         <div className="-z-1 relative flex items-center justify-center w-full h-90 max-sm:h-30">
@@ -37,11 +43,10 @@ import { useNavigate } from "react-router";
             <FaceScanner />
           </div>
         </div>
+        
         <p className='w-120 max-sm:w-full max-sm:text-sm hidden max-sm:block mt-16'>Gunakan kamera Anda untuk deteksi cepat. Gratis, Aman, dan Akurat. Pantau kesehatan jantung Anda kapan saja, di mana saja dengan presisi tinggi.</p>
         <div className="flex max-sm:flex-col gap-4 mt-2 max-sm:w-full">
-          <button className="main-btn flex items-center justify-center border border-sariblue text-sariblue">
-            Pelajari Lebih Lanjut
-          </button>
+        <button onClick={scrollToFeatures} className="main-btn flex items-center justify-center border border-sariblue text-sariblue">Pelajari Lebih Lanjut</button>
           <button onClick={() => navigate('/login')} className="main-btn flex items-center justify-center gap-2 bg-sarired text-sariwhite">
             Mulai Sekarang <ArrowRight size={18} />
           </button>
