@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-sariredlight: #FFB9A9;
+    --color-sarireddark: #e6a698;
+    --color-sarireddarker: #d99d8f;
+    --color-sarired: #FF5267;
+    --color-saribluelight: #CAFFFA;
+    --color-sariblue: #91C6C2;
+    --color-sariyellowlight: #FAE7CA;
+    --color-sariyellowdark: #EDDBC0;
+    --color-sariyellow: #C8B9A2;
+    --color-sariblack: #191C1E;
+    --color-sarigray: #45464D;
+    --color-sariwhite: #F9F9F5;
+    --font-mr: Manrope, sans-serif;
+    --font-int: Inter, sans-serif;
+}
+
+:root {
+    interpolate-size: allow-keywords;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-synthesis: none;
+    @apply font-int bg-sariwhite text-sariblack;
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body,
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.main-btn {
+    @apply px-10 py-3 text-base rounded-2xl cursor-pointer hover:scale-105 transition-all duration-112;
+}
+
+.heading-1 {
+    @apply text-5xl/[112%] max-sm:text-4xl/[112%] font-semibold font-mr tracking-tighter;
+}
+
+.chip-title {
+    @apply flex flex-col gap-4 h-max;
+}
+
+.chip {
+    @apply border px-6 py-2 rounded-4xl w-max h-max;
+}
+
+.card {
+    @apply flex flex-col items-start p-10 rounded-[64px] max-sm:rounded-[48px] w-82 max-sm:w-full h-140 max-sm:h-90 justify-between;
+}
+
+.card h1 {
+    @apply text-[40px]/[110%] max-sm:text-2xl/[110%] w-[90%] font-semibold font-mr tracking-tight;
+}
+
+.card-desc {
+    @apply flex flex-col gap-6 max-sm:gap-4;
+}
+
+.card-small {
+    @apply flex flex-col h-50 max-sm:h-full max-sm:gap-2 justify-center rounded-3xl max-sm:rounded-2xl p-6 max-sm:p-4 bg-saribluelight relative overflow-clip border border-sariblue max-sm:border-0;
+}
+
+.card-small * {
+    @apply z-2;
+}
+
+.card-small::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    background-color: white;
+    opacity: 21%;
+}
+
+.card-small h1 {
+    @apply font-mr font-semibold text-[56px] max-sm:text-4xl;
+}
+
+.testimonial {
+    @apply flex max-sm:flex-col gap-12 max-sm:gap-6 px-14 py-10 max-sm:p-8 rounded-[56px] max-sm:rounded-4xl w-180 max-sm:w-full;
+}
+
+.testimonial-star {
+    @apply flex text-sarired;
+}
+
+.navigation {
+    @apply absolute px-8 h-16 rounded-4xl bg-sariyellowlight flex justify-center items-center cursor-pointer hover:scale-105 transition-all duration-112;
+}
+
+.accordion-title {
+    @apply flex justify-between items-center text-2xl bg-sariyellowlight rounded-t-[40px] gap-6;
+}
+
+.accordion-content {
+    display: none;
+    transition: grid-template-rows 200ms ease;
+    @apply border-2 border-sariyellowlight p-6 text-lg;
+}
+
+.accordion-content.open {
+    display: block;
+}
+
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+
+/* DASHBOARD */
+main {
+    scrollbar-width: none;
+}
+.dsh-cards {
+    @apply p-6 max-sm:p-4 rounded-3xl max-sm:rounded-2xl border
+}
+.chatpage * {
+    scrollbar-width: none;
+}
+.bubble-chat {
+    @apply text-base/[145%] max-sm:text-sm max-w-[90%] px-6 max-sm:px-4 py-4 max-sm:py-3
+}
+.bubble-chat.userinput {
+    @apply bg-sariblue text-white rounded-2xl max-sm:rounded-xl rounded-tr-none max-sm:rounded-tr-none
+}
+.bubble-chat.botinput {
+    @apply bg-sariwhite text-sariblack border border-sariblack/14 rounded-2xl max-sm:rounded-xl rounded-tl-none max-sm:rounded-tl-none
+}
+
+/* Background Feature */
+.bg-marquee-wrapper {
+    display: flex;
+    flex-direction: column;
+    animation: scrollDown 25s linear infinite;
+    line-height: 0;
+  }
+
+  @keyframes scrollDown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+  
+  .bg-marquee-wrapper svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  
