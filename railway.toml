@@ -2,5 +2,5 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "cd backend && gunicorn app:app"
+startCommand = "gunicorn app:app"
 restartPolicyType = "ON_FAILURE"
